@@ -1,0 +1,186 @@
+<robot name="uav">
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="3.1415926 0 0" />
+      <geometry>
+        <mesh filename="package://uam_urdf/meshes/uav2/link0.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.6 0.6 0.4 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="3.1415926 0 0" />
+      <geometry>
+        <mesh filename="package://uam_urdf/meshes/uav2/link0.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="revolute_joint_0" type="revolute"> 
+    <parent link="base_link"/> 
+    <child link="link1"/> 
+    <axis xyz="0 0 1"/>  
+    <origin xyz="0 0 -0.0411" rpy="0 0 0"/> 
+    <limit effort ="1000.0" lower="-2.618" upper="2.618" velocity="0.5"/>  
+  </joint>
+
+  <link name="link1">
+    <visual>
+      <origin xyz="0 0 0" rpy="3.1415926 0 0" />
+      <geometry>
+        <mesh filename="package://uam_urdf/meshes/uav2/link1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="3.1415926 0 0" />
+      <geometry>
+        <mesh filename="package://uam_urdf/meshes/uav2/link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="revolute_joint_1" type="revolute"> 
+    <parent link="link1"/> 
+    <child link="link2"/> 
+    <axis xyz="0 0 1"/>  
+    <origin xyz="0 0.02035 -0.0331" rpy="-1.5707963 0 0"/> 
+    <limit effort ="1000.0" lower="-1.5707963" upper="1.5707963" velocity="0.5"/>  
+  </joint>
+
+  <link name="link2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://uam_urdf/meshes/uav2/link2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.6 0.6 0.4 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://uam_urdf/meshes/uav2/link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="revolute_joint_2" type="revolute"> 
+    <parent link="link2"/> 
+    <child link="link3"/> 
+    <axis xyz="0 0 1"/>  
+    <origin xyz="0 0.25 -0.00245" rpy="0 0 0"/> 
+    <limit effort ="1000.0" lower="-2.618" upper="2.618" velocity="0.5"/>  
+  </joint>
+  
+  <link name="link3">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://uam_urdf/meshes/uav2/link3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://uam_urdf/meshes/uav2/link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="revolute_joint_3" type="revolute"> 
+    <parent link="link3"/> 
+    <child link="link4"/> 
+    <axis xyz="0 0 1"/>  
+    <origin xyz="0 0.2194 -0.0179" rpy="-1.5707963 -1.5707963 0"/> 
+    <limit effort ="1000.0" lower="-2.618" upper="2.618" velocity="0.5"/>  
+  </joint>
+
+  <link name="link4">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://uam_urdf/meshes/uav2/link4.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.6 0.6 0.4 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://uam_urdf/meshes/uav2/link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="revolute_joint_4" type="revolute"> 
+    <parent link="link4"/> 
+    <child link="link5"/> 
+    <axis xyz="0 0 1"/>  
+    <origin xyz="-0.01145 0 0.02652" rpy="1.5707963 -1.5707963 1.5707963"/> 
+    <limit effort ="1000.0" lower="-2.618" upper="2.618" velocity="0.5"/>  
+  </joint>
+
+  <link name="link5">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://uam_urdf/meshes/uav2/link5.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://uam_urdf/meshes/uav2/link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="revolute_joint_5" type="revolute"> 
+    <parent link="link5"/> 
+    <child link="link6"/> 
+    <axis xyz="0 0 1"/>  
+    <origin xyz="0.02085 0.00176 0.01145" rpy="-1.5707963 0 -1.5707963"/> 
+    <limit effort ="1000.0" lower="-2.618" upper="2.618" velocity="0.5"/>  
+  </joint>
+
+  <link name="link6">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://uam_urdf/meshes/uav2/link6.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.6 0.6 0.4 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://uam_urdf/meshes/uav/link6.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="fixed_joint_0" type="fixed"> 
+  <parent link="link6"/> 
+  <child link="ee_link"/> 
+  <origin xyz="0 0 0.07" rpy="0 0 0"/> 
+  </joint>
+
+  <link name="ee_link">
+  </link>
+
+</robot>
+  
