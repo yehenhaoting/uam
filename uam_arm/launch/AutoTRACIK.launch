@@ -1,11 +1,13 @@
 <launch>
   <node pkg="uam_arm" name="TRACIKsolver" type="TRACIKsolver"/>
   <node pkg="uam_arm" name="KeyboardTeleopNode" type="KeyboardTeleopNode" />
-  <node pkg="uam_arm" name="ftServo" type="ftServo" output="screen"/>
+  <!--<node pkg="uam_arm" name="ftServo" type="ftServo" output="screen"/>-->
   <arg name="model" />
   <arg name="gui" default="false" />
   <param name="robot_description" textfile="$(find uam_urdf)/urdf/uav2.urdf" />
   <param name="use_gui" value="$(arg gui)" />
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />  
-  <node name="rviz" pkg="rviz" type="rviz" /> 
+
+  <!--<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />-->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+  <node name="rviz" pkg="rviz" type="rviz" />
 </launch>

@@ -23,8 +23,6 @@
 #include <sstream>
 #include <string>
 
-using namespace KDL;
-using namespace std;
 
 double x=0.12,y=0,z=-0.2,w=100;
 
@@ -34,7 +32,7 @@ void chatterCallback(const geometry_msgs::Quaternion& msg)
   y=msg.y;
   z=msg.z;
   w=msg.w;
-  cout<<"x:"<<x<<" y:"<<y<<" z:"<<z<<" w:"<<w<<endl;
+  std::cout<<"x:"<<x<<" y:"<<y<<" z:"<<z<<" w:"<<w<<std::endl;
 }
 
 
@@ -75,15 +73,19 @@ int main(int argc, char** argv)
     } 
 
     //KDL
-    Tree my_tree;
-    kdl_parser::treeFromFile("/home/uav/uam_ws/src/uam_urdf/urdf/uav2.urdf",my_tree);
+    KDL::Tree my_tree;
+    kdl_parser::treeFromFile("/home/zm/uam_ws/src/uam_urdf/urdf/uav2.urdf",my_tree);
+//    std::string robot_desc_string;
+//    n.param("robot_description", robot_desc_string, std::string());
+//    kdl_parser::treeFromParam("robot_description", my_tree);
 
-    Chain kdl_chain1;
-    Chain kdl_chain2;
-    Chain kdl_chain3;
-    Chain kdl_chain4;
-    Chain kdl_chain5;
-    Chain kdl_chain6;
+
+    KDL::Chain kdl_chain1;
+    KDL::Chain kdl_chain2;
+    KDL::Chain kdl_chain3;
+    KDL::Chain kdl_chain4;
+    KDL::Chain kdl_chain5;
+    KDL::Chain kdl_chain6;
 
     my_tree.getChain("base_link","link1",kdl_chain1);
     my_tree.getChain("base_link","link2",kdl_chain2);
@@ -96,12 +98,12 @@ int main(int argc, char** argv)
     int maxiter=1000;
     double eps_joints=1E-15;
 
-    ChainFkSolverPos_recursive kdl_fksolver1 = ChainFkSolverPos_recursive(kdl_chain1);
-    ChainFkSolverPos_recursive kdl_fksolver2 = ChainFkSolverPos_recursive(kdl_chain2);
-    ChainFkSolverPos_recursive kdl_fksolver3 = ChainFkSolverPos_recursive(kdl_chain3);
-    ChainFkSolverPos_recursive kdl_fksolver4 = ChainFkSolverPos_recursive(kdl_chain4);
-    ChainFkSolverPos_recursive kdl_fksolver5 = ChainFkSolverPos_recursive(kdl_chain5);
-    ChainFkSolverPos_recursive kdl_fksolver6 = ChainFkSolverPos_recursive(kdl_chain6);
+    KDL::ChainFkSolverPos_recursive kdl_fksolver1 = KDL::ChainFkSolverPos_recursive(kdl_chain1);
+    KDL::ChainFkSolverPos_recursive kdl_fksolver2 = KDL::ChainFkSolverPos_recursive(kdl_chain2);
+    KDL::ChainFkSolverPos_recursive kdl_fksolver3 = KDL::ChainFkSolverPos_recursive(kdl_chain3);
+    KDL::ChainFkSolverPos_recursive kdl_fksolver4 = KDL::ChainFkSolverPos_recursive(kdl_chain4);
+    KDL::ChainFkSolverPos_recursive kdl_fksolver5 = KDL::ChainFkSolverPos_recursive(kdl_chain5);
+    KDL::ChainFkSolverPos_recursive kdl_fksolver6 = KDL::ChainFkSolverPos_recursive(kdl_chain6);
 
     unsigned int nj1 = kdl_chain1.getNrOfJoints();
     unsigned int nj2 = kdl_chain2.getNrOfJoints();
@@ -110,27 +112,27 @@ int main(int argc, char** argv)
     unsigned int nj5 = kdl_chain5.getNrOfJoints();
     unsigned int nj6 = kdl_chain6.getNrOfJoints();
 
-    JntArray kdl_jointpositions1 = JntArray(nj1);
-    JntArray kdl_jointpositions2 = JntArray(nj2);
-    JntArray kdl_jointpositions3 = JntArray(nj3);
-    JntArray kdl_jointpositions4 = JntArray(nj4);
-    JntArray kdl_jointpositions5 = JntArray(nj5);
-    JntArray kdl_jointpositions6 = JntArray(nj6);
+    KDL::JntArray kdl_jointpositions1 = KDL::JntArray(nj1);
+    KDL::JntArray kdl_jointpositions2 = KDL::JntArray(nj2);
+    KDL::JntArray kdl_jointpositions3 = KDL::JntArray(nj3);
+    KDL::JntArray kdl_jointpositions4 = KDL::JntArray(nj4);
+    KDL::JntArray kdl_jointpositions5 = KDL::JntArray(nj5);
+    KDL::JntArray kdl_jointpositions6 = KDL::JntArray(nj6);
 
-    Frame kdl_cartpos1;
-    Frame kdl_cartpos2;
-    Frame kdl_cartpos3;
-    Frame kdl_cartpos4;
-    Frame kdl_cartpos5;
-    Frame kdl_cartpos6;
+    KDL::Frame kdl_cartpos1;
+    KDL::Frame kdl_cartpos2;
+    KDL::Frame kdl_cartpos3;
+    KDL::Frame kdl_cartpos4;
+    KDL::Frame kdl_cartpos5;
+    KDL::Frame kdl_cartpos6;
 
     //Rotation rot = Rotation(0.000796325,0.999999,-0.00079379,-2.01992e-9,0.00079379,1,1,-0.000796324,6.34135e-7);
-    Rotation rot = Rotation::RPY(1.5707963,0,1.5707963);
+    KDL::Rotation rot = KDL::Rotation::RPY(1.5707963,0,1.5707963);
     sensor_msgs::JointState joint_state;
     int count=0;
     while(ros::ok()){
-        Vector vector = Vector(x,y,z);
-        KDL::Frame cartpos = Frame(rot,vector);
+        KDL::Vector vector = KDL::Vector(x,y,z);
+        KDL::Frame cartpos = KDL::Frame(rot,vector);
         KDL::JntArray jointpositions;
 
         int kinematics_status;
@@ -143,7 +145,7 @@ int main(int argc, char** argv)
             joint_state.position.resize(nj);
             for(int i=0;i<nj;i++)
             {
-                stringstream ss;
+                std::stringstream ss;
                 ss<<i;
                 joint_state.name[i] = "revolute_joint_" + ss.str();
                 joint_state.position[i] = jointpositions(i);
@@ -179,9 +181,9 @@ int main(int argc, char** argv)
                 joint_state_pub.publish(joint_state);
             }
         }
-        else{cout<<"error!!!!!"<<endl;}
+        else{std::cout<<"error!!!!!"<<std::endl;}
 
-        cout<<kdl_cartpos1.p<<"_"<<kdl_cartpos2.p<<"_"<<kdl_cartpos3.p<<"_"<<kdl_cartpos4.p<<"_"<<kdl_cartpos5.p<<"_"<<kdl_cartpos6.p<<endl;
+        std::cout<<kdl_cartpos1.p<<"_"<<kdl_cartpos2.p<<"_"<<kdl_cartpos3.p<<"_"<<kdl_cartpos4.p<<"_"<<kdl_cartpos5.p<<"_"<<kdl_cartpos6.p<<std::endl;
         ros::spinOnce();
         loop.sleep();
     }
