@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/zm/uam_ws/src/uam_arm/cmake-build-debug/devel/setup.sh
