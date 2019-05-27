@@ -1,6 +1,7 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/make" "cmTC_4f1e4/fast"
 /usr/bin/make -f CMakeFiles/cmTC_4f1e4.dir/build.make CMakeFiles/cmTC_4f1e4.dir/build
 make[1]: Entering directory '/home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeTmp'
@@ -17,6 +18,24 @@ make[1]: *** [cmTC_4f1e4] Error 1
 make[1]: Leaving directory '/home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeTmp'
 Makefile:121: recipe for target 'cmTC_4f1e4/fast' failed
 make: *** [cmTC_4f1e4/fast] Error 2
+=======
+Run Build Command:"/usr/bin/make" "cmTC_a8e49/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a8e49.dir/build.make CMakeFiles/cmTC_a8e49.dir/build
+make[1]: Entering directory '/home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a8e49.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_a8e49.dir/CheckSymbolExists.c.o   -c /home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_a8e49
+/home/zm/setup/clion-2018.2.6/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a8e49.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_a8e49.dir/CheckSymbolExists.c.o  -o cmTC_a8e49 
+CMakeFiles/cmTC_a8e49.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_a8e49.dir/build.make:86: recipe for target 'cmTC_a8e49' failed
+make[1]: *** [cmTC_a8e49] Error 1
+make[1]: Leaving directory '/home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_a8e49/fast' failed
+make: *** [cmTC_a8e49/fast] Error 2
+>>>>>>> 3af868b... add reconfigure cfg for servo test
 
 File /home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -36,6 +55,7 @@ int main(int argc, char** argv)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeTmp
 
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/make" "cmTC_3fd99/fast"
 /usr/bin/make -f CMakeFiles/cmTC_3fd99.dir/build.make CMakeFiles/cmTC_3fd99.dir/build
 make[1]: Entering directory '/home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeTmp'
@@ -51,5 +71,22 @@ make[1]: *** [cmTC_3fd99] Error 1
 make[1]: Leaving directory '/home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeTmp'
 Makefile:121: recipe for target 'cmTC_3fd99/fast' failed
 make: *** [cmTC_3fd99/fast] Error 2
+=======
+Run Build Command:"/usr/bin/make" "cmTC_542f9/fast"
+/usr/bin/make -f CMakeFiles/cmTC_542f9.dir/build.make CMakeFiles/cmTC_542f9.dir/build
+make[1]: Entering directory '/home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_542f9.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_542f9.dir/CheckFunctionExists.c.o   -c /home/zm/setup/clion-2018.2.6/bin/cmake/linux/share/cmake-3.12/Modules/CheckFunctionExists.c
+Linking C executable cmTC_542f9
+/home/zm/setup/clion-2018.2.6/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_542f9.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_542f9.dir/CheckFunctionExists.c.o  -o cmTC_542f9 -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_542f9.dir/build.make:86: recipe for target 'cmTC_542f9' failed
+make[1]: *** [cmTC_542f9] Error 1
+make[1]: Leaving directory '/home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_542f9/fast' failed
+make: *** [cmTC_542f9/fast] Error 2
+>>>>>>> 3af868b... add reconfigure cfg for servo test
 
 

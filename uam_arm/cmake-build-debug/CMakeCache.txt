@@ -299,6 +299,27 @@ catkin_DIR:PATH=/opt/ros/kinetic/share/catkin/cmake
 //The directory containing a CMake configuration file for cpp_common.
 cpp_common_DIR:PATH=/opt/ros/kinetic/share/cpp_common/cmake
 
+//The directory containing a CMake configuration file for dynamic_reconfigure.
+dynamic_reconfigure_DIR:PATH=/opt/ros/kinetic/share/dynamic_reconfigure/cmake
+
+//The directory containing a CMake configuration file for gencpp.
+gencpp_DIR:PATH=/opt/ros/kinetic/share/gencpp/cmake
+
+//The directory containing a CMake configuration file for geneus.
+geneus_DIR:PATH=/opt/ros/kinetic/share/geneus/cmake
+
+//The directory containing a CMake configuration file for genlisp.
+genlisp_DIR:PATH=/opt/ros/kinetic/share/genlisp/cmake
+
+//The directory containing a CMake configuration file for genmsg.
+genmsg_DIR:PATH=/opt/ros/kinetic/share/genmsg/cmake
+
+//The directory containing a CMake configuration file for gennodejs.
+gennodejs_DIR:PATH=/opt/ros/kinetic/share/gennodejs/cmake
+
+//The directory containing a CMake configuration file for genpy.
+genpy_DIR:PATH=/opt/ros/kinetic/share/genpy/cmake
+
 //Value Computed by CMake
 gmock_BINARY_DIR:STATIC=/home/zm/uam_ws/src/uam_arm/cmake-build-debug/gtest
 
@@ -343,7 +364,14 @@ gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 kdl_parser_DIR:PATH=kdl_parser_DIR-NOTFOUND
 
 //Path to a library.
+<<<<<<< HEAD
 lib:FILEPATH=/opt/ros/kinetic/lib/libxmlrpcpp.so
+=======
+lib:FILEPATH=/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so
+
+//The directory containing a CMake configuration file for message_generation.
+message_generation_DIR:PATH=/opt/ros/kinetic/share/message_generation/cmake
+>>>>>>> 3af868b... add reconfigure cfg for servo test
 
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/kinetic/share/message_runtime/cmake

@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: uam_arm
+Description: Description of uam_arm
+Version: 0.0.0
+Cflags: -I/usr/local/include -I/usr/include -I/usr/include/eigen3 -I/opt/ros/kinetic/include
+Libs: -L/usr/local/lib /usr/lib/x86_64-linux-gnu/libboost_date_time.so /opt/ros/kinetic/lib/liborocos-kdl.so.1.3.0
+Requires: trac_ik_lib
