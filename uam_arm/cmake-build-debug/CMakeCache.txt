@@ -365,12 +365,18 @@ kdl_parser_DIR:PATH=kdl_parser_DIR-NOTFOUND
 
 //Path to a library.
 <<<<<<< HEAD
+<<<<<<< HEAD
 lib:FILEPATH=/opt/ros/kinetic/lib/libxmlrpcpp.so
 =======
+=======
+>>>>>>> 3af868b... add reconfigure cfg for servo test
 lib:FILEPATH=/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so
 
 //The directory containing a CMake configuration file for message_generation.
 message_generation_DIR:PATH=/opt/ros/kinetic/share/message_generation/cmake
+<<<<<<< HEAD
+>>>>>>> 3af868b... add reconfigure cfg for servo test
+=======
 >>>>>>> 3af868b... add reconfigure cfg for servo test
 
 //The directory containing a CMake configuration file for message_runtime.

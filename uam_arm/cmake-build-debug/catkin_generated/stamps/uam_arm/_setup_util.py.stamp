@@ -263,7 +263,11 @@ if __name__ == '__main__':
 
         # environment at generation time
 <<<<<<< HEAD
+<<<<<<< HEAD
         CMAKE_PREFIX_PATH = '/home/zm/uam_ws/devel;/home/zm/catkin_ws/devel;/opt/ros/kinetic'.split(';')
+=======
+        CMAKE_PREFIX_PATH = '/home/zm/catkin_moveit/devel;/home/zm/uam_ws/devel;/opt/ros/kinetic'.split(';')
+>>>>>>> 3af868b... add reconfigure cfg for servo test
 =======
         CMAKE_PREFIX_PATH = '/home/zm/catkin_moveit/devel;/home/zm/uam_ws/devel;/opt/ros/kinetic'.split(';')
 >>>>>>> 3af868b... add reconfigure cfg for servo test
