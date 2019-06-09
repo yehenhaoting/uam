@@ -3,9 +3,6 @@
 #include <kdl/tree.hpp>
 #include <kdl/segment.hpp>
 #include <kdl/chainfksolver.hpp>
-#include <kdl/chainfksolverpos_recursive.hpp>
-#include <kdl/chainfksolver.hpp>
-#include <kdl/chainiksolver.hpp>
 #include <kdl/chainiksolverpos_lma.hpp>
 #include <kdl/chainiksolverpos_nr.hpp>
 #include <kdl/chainiksolverpos_nr_jl.hpp>
@@ -14,6 +11,7 @@
 #include <kdl/frames_io.hpp>
 #include <kdl/frames.hpp>
 #include <trac_ik/trac_ik.hpp>
+
 #include <stdio.h>
 #include <iostream>
 #include "ros/ros.h"
@@ -42,7 +40,7 @@ int main(int argc, char** argv)
     ros::init(argc, argv, "talker");
     ros::NodeHandle n;
     ros::Publisher joint_state_pub = n.advertise<sensor_msgs::JointState>("/joint_states", 1);
-    ros::Subscriber joint_state_sub = n.subscribe("position", 1, chatterCallback);
+    ros::Subscriber end_effector_sub = n.subscribe("position", 10, chatterCallback);
     ros::Rate loop (50);
 
 
@@ -74,6 +72,7 @@ int main(int argc, char** argv)
 
     //KDL
     KDL::Tree my_tree;
+<<<<<<< Updated upstream
     kdl_parser::treeFromFile("/home/zm/uam_ws/src/uam_urdf/urdf/uav2.urdf",my_tree);
 //    std::string robot_desc_string;
 //    n.param("robot_description", robot_desc_string, std::string());
@@ -86,6 +85,11 @@ int main(int argc, char** argv)
     KDL::Chain kdl_chain4;
     KDL::Chain kdl_chain5;
     KDL::Chain kdl_chain6;
+=======
+    kdl_parser::treeFromFile("/home/ubuntu/uam_ws/src/uam_urdf/urdf/uav2.urdf",my_tree);
+
+    KDL::Chain kdl_chain1, kdl_chain2, kdl_chain3, kdl_chain4, kdl_chain5, kdl_chain6;
+>>>>>>> Stashed changes
 
     my_tree.getChain("base_link","link1",kdl_chain1);
     my_tree.getChain("base_link","link2",kdl_chain2);
@@ -119,19 +123,28 @@ int main(int argc, char** argv)
     KDL::JntArray kdl_jointpositions5 = KDL::JntArray(nj5);
     KDL::JntArray kdl_jointpositions6 = KDL::JntArray(nj6);
 
+<<<<<<< Updated upstream
     KDL::Frame kdl_cartpos1;
     KDL::Frame kdl_cartpos2;
     KDL::Frame kdl_cartpos3;
     KDL::Frame kdl_cartpos4;
     KDL::Frame kdl_cartpos5;
     KDL::Frame kdl_cartpos6;
+=======
+    KDL::Frame kdl_cartpos1, kdl_cartpos2, kdl_cartpos3, kdl_cartpos4, kdl_cartpos5, kdl_cartpos6;
+>>>>>>> Stashed changes
 
     //Rotation rot = Rotation(0.000796325,0.999999,-0.00079379,-2.01992e-9,0.00079379,1,1,-0.000796324,6.34135e-7);
     KDL::Rotation rot = KDL::Rotation::RPY(1.5707963,0,1.5707963);
     sensor_msgs::JointState joint_state;
     int count=0;
     while(ros::ok()){
+<<<<<<< Updated upstream
         KDL::Vector vector = KDL::Vector(x,y,z);
+=======
+//        KDL::Vector vector = KDL::Vector(x,y,z);
+        KDL::Vector vector(x,y,z);
+>>>>>>> Stashed changes
         KDL::Frame cartpos = KDL::Frame(rot,vector);
         KDL::JntArray jointpositions;
 
