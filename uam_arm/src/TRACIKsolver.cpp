@@ -76,7 +76,7 @@ int main(int argc, char** argv)
 
     //KDL
     Tree my_tree;
-    kdl_parser::treeFromFile("/home/uav/uam_ws/src/uam_urdf/urdf/uav2.urdf",my_tree);
+    kdl_parser::treeFromParam("/robot_description",my_tree);
 
     Chain kdl_chain1;
     Chain kdl_chain2;
@@ -181,7 +181,7 @@ int main(int argc, char** argv)
         }
         else{cout<<"error!!!!!"<<endl;}
 
-        cout<<kdl_cartpos1.p<<"_"<<kdl_cartpos2.p<<"_"<<kdl_cartpos3.p<<"_"<<kdl_cartpos4.p<<"_"<<kdl_cartpos5.p<<"_"<<kdl_cartpos6.p<<endl;
+//        cout<<kdl_cartpos1.p<<"_"<<kdl_cartpos2.p<<"_"<<kdl_cartpos3.p<<"_"<<kdl_cartpos4.p<<"_"<<kdl_cartpos5.p<<"_"<<kdl_cartpos6.p<<endl;
         ros::spinOnce();
         loop.sleep();
     }
