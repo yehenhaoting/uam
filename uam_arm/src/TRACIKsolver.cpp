@@ -22,7 +22,7 @@
 #include <string>
 
 
-double x=0.12,y=0,z=-0.2,w=100;
+double x=0.25,y=0,z=0.32,w=100;
 
 void chatterCallback(const geometry_msgs::Quaternion& msg)
 {
@@ -45,11 +45,11 @@ int main(int argc, char** argv)
 
 
     //Trac_IK
-    TRAC_IK::TRAC_IK tracik_solver("base_link", "ee_link", "/robot_description", 0.005, 1E-5);
+    TRAC_IK::TRAC_IK tracik_solver("base_link", "end_link", "/robot_description", 0.005, 1E-5, TRAC_IK::Speed); //TRAC_IK::SolveType  Distance
     KDL::Chain chain;
     KDL::JntArray ll, ul; //lower joint limits, upper joint limits
     bool valid = tracik_solver.getKDLChain(chain);
- 
+
     if (!valid) {
         ROS_ERROR("There was no valid KDL chain found");
         return 0;
@@ -68,28 +68,13 @@ int main(int argc, char** argv)
     unsigned int nj = chain.getNrOfJoints();
     for (uint j=0; j<nominal.data.size(); j++) {
         nominal(j) = (ll(j)+ul(j))/2.0;
-    } 
+    }
 
     //KDL
     KDL::Tree my_tree;
-<<<<<<< Updated upstream
-    kdl_parser::treeFromFile("/home/zm/uam_ws/src/uam_urdf/urdf/uav2.urdf",my_tree);
-//    std::string robot_desc_string;
-//    n.param("robot_description", robot_desc_string, std::string());
-//    kdl_parser::treeFromParam("robot_description", my_tree);
-
-
-    KDL::Chain kdl_chain1;
-    KDL::Chain kdl_chain2;
-    KDL::Chain kdl_chain3;
-    KDL::Chain kdl_chain4;
-    KDL::Chain kdl_chain5;
-    KDL::Chain kdl_chain6;
-=======
-    kdl_parser::treeFromFile("/home/ubuntu/uam_ws/src/uam_urdf/urdf/uav2.urdf",my_tree);
+    kdl_parser::treeFromFile("/home/zm/uam_ws/src/robot_urdf/urdf/robot_urdf.urdf",my_tree);
 
     KDL::Chain kdl_chain1, kdl_chain2, kdl_chain3, kdl_chain4, kdl_chain5, kdl_chain6;
->>>>>>> Stashed changes
 
     my_tree.getChain("base_link","link1",kdl_chain1);
     my_tree.getChain("base_link","link2",kdl_chain2);
@@ -123,35 +108,24 @@ int main(int argc, char** argv)
     KDL::JntArray kdl_jointpositions5 = KDL::JntArray(nj5);
     KDL::JntArray kdl_jointpositions6 = KDL::JntArray(nj6);
 
-<<<<<<< Updated upstream
-    KDL::Frame kdl_cartpos1;
-    KDL::Frame kdl_cartpos2;
-    KDL::Frame kdl_cartpos3;
-    KDL::Frame kdl_cartpos4;
-    KDL::Frame kdl_cartpos5;
-    KDL::Frame kdl_cartpos6;
-=======
-    KDL::Frame kdl_cartpos1, kdl_cartpos2, kdl_cartpos3, kdl_cartpos4, kdl_cartpos5, kdl_cartpos6;
->>>>>>> Stashed changes
 
-    //Rotation rot = Rotation(0.000796325,0.999999,-0.00079379,-2.01992e-9,0.00079379,1,1,-0.000796324,6.34135e-7);
-    KDL::Rotation rot = KDL::Rotation::RPY(1.5707963,0,1.5707963);
+    KDL::Frame kdl_cartpos1, kdl_cartpos2, kdl_cartpos3, kdl_cartpos4, kdl_cartpos5, kdl_cartpos6;
+
+    KDL::Rotation rot = KDL::Rotation::RPY(-1.5707963,1.5707963,0);
     sensor_msgs::JointState joint_state;
     int count=0;
     while(ros::ok()){
-<<<<<<< Updated upstream
-        KDL::Vector vector = KDL::Vector(x,y,z);
-=======
-//        KDL::Vector vector = KDL::Vector(x,y,z);
+
         KDL::Vector vector(x,y,z);
->>>>>>> Stashed changes
+
         KDL::Frame cartpos = KDL::Frame(rot,vector);
         KDL::JntArray jointpositions;
 
         int kinematics_status;
         kinematics_status = tracik_solver.CartToJnt(nominal,cartpos,jointpositions);
+//        kinematics_status = 1;
 
-        if(kinematics_status)
+        if(kinematics_status >= 0)
         {
             joint_state.header.stamp = ros::Time::now();
             joint_state.name.resize(nj);
@@ -160,8 +134,9 @@ int main(int argc, char** argv)
             {
                 std::stringstream ss;
                 ss<<i;
-                joint_state.name[i] = "revolute_joint_" + ss.str();
+                joint_state.name[i] = "joint" + ss.str();
                 joint_state.position[i] = jointpositions(i);
+                std::cout<<jointpositions(i)<<std::endl;
                 nominal(i)=jointpositions(i);
             }
             for(unsigned int i=0;i<nj1;i++){
@@ -189,16 +164,20 @@ int main(int argc, char** argv)
             kdl_fksolver4.JntToCart( kdl_jointpositions4,kdl_cartpos4);
             kdl_fksolver5.JntToCart( kdl_jointpositions5,kdl_cartpos5);
             kdl_fksolver6.JntToCart( kdl_jointpositions6,kdl_cartpos6);
-            if(kdl_cartpos6.p.z()<-0.035&&kdl_cartpos5.p.z()<-0.035&&kdl_cartpos4.p.z()<-0.035&&kdl_cartpos3.p.z()<-0.035&&kdl_cartpos2.p.z()<-0.035)
+            if(kdl_cartpos6.p.z() > 0.035 && kdl_cartpos5.p.z() > 0.035 && kdl_cartpos4.p.z() > 0.035 && kdl_cartpos3.p.z() > 0.035 && kdl_cartpos2.p.z() > 0.035)
             {
                 joint_state_pub.publish(joint_state);
             }
         }
-        else{std::cout<<"error!!!!!"<<std::endl;}
+        else{std::cout<<"error!!!!!"<<std::endl;
 
-        std::cout<<kdl_cartpos1.p<<"_"<<kdl_cartpos2.p<<"_"<<kdl_cartpos3.p<<"_"<<kdl_cartpos4.p<<"_"<<kdl_cartpos5.p<<"_"<<kdl_cartpos6.p<<std::endl;
+        }
+
+//        std::cout<<kdl_cartpos1.p<<"_"<<kdl_cartpos2.p<<"_"<<kdl_cartpos3.p<<"_"<<kdl_cartpos4.p<<"_"<<kdl_cartpos5.p<<"_"<<kdl_cartpos6.p<<std::endl;
+//        std::cout<<kdl_cartpos6.p<<std::endl;
         ros::spinOnce();
         loop.sleep();
     }
 
+    return 0;
 }
