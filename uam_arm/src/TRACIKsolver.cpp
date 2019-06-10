@@ -26,7 +26,7 @@
 using namespace KDL;
 using namespace std;
 
-double x=0.12,y=0,z=-0.2,w=100;
+double x=0.12,y=0,z=0.2,w=100;
 
 void chatterCallback(const geometry_msgs::Quaternion& msg)
 {
@@ -49,7 +49,7 @@ int main(int argc, char** argv)
 
 
     //Trac_IK
-    TRAC_IK::TRAC_IK tracik_solver("base_link", "ee_link", "/robot_description", 0.005, 1E-5);
+    TRAC_IK::TRAC_IK tracik_solver("base_link", "end_link", "/robot_description", 0.005, 1E-5);
     KDL::Chain chain;
     KDL::JntArray ll, ul; //lower joint limits, upper joint limits
     bool valid = tracik_solver.getKDLChain(chain);
@@ -136,7 +136,7 @@ int main(int argc, char** argv)
         int kinematics_status;
         kinematics_status = tracik_solver.CartToJnt(nominal,cartpos,jointpositions);
 
-        if(kinematics_status)
+        if(kinematics_status >= 0)
         {
             joint_state.header.stamp = ros::Time::now();
             joint_state.name.resize(nj);
@@ -145,7 +145,7 @@ int main(int argc, char** argv)
             {
                 stringstream ss;
                 ss<<i;
-                joint_state.name[i] = "revolute_joint_" + ss.str();
+                joint_state.name[i] = "joint" + ss.str();
                 joint_state.position[i] = jointpositions(i);
                 nominal(i)=jointpositions(i);
             }
@@ -174,10 +174,12 @@ int main(int argc, char** argv)
             kdl_fksolver4.JntToCart( kdl_jointpositions4,kdl_cartpos4);
             kdl_fksolver5.JntToCart( kdl_jointpositions5,kdl_cartpos5);
             kdl_fksolver6.JntToCart( kdl_jointpositions6,kdl_cartpos6);
-            if(kdl_cartpos6.p.z()<-0.035&&kdl_cartpos5.p.z()<-0.035&&kdl_cartpos4.p.z()<-0.035&&kdl_cartpos3.p.z()<-0.035&&kdl_cartpos2.p.z()<-0.035)
-            {
-                joint_state_pub.publish(joint_state);
-            }
+//            if(kdl_cartpos6.p.z()<-0.035&&kdl_cartpos5.p.z()<-0.035&&kdl_cartpos4.p.z()<-0.035&&kdl_cartpos3.p.z()<-0.035&&kdl_cartpos2.p.z()<-0.035)
+//            {
+//                joint_state_pub.publish(joint_state);
+//            }
+            joint_state_pub.publish(joint_state);
+
         }
         else{cout<<"error!!!!!"<<endl;}
 
