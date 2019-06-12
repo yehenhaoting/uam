@@ -1,0 +1,29 @@
+<launch>
+
+  <!-- joy node -->
+  <node respawn="true" pkg="joy"
+        type="joy_node" name="turtle_joy" >
+    <param name="dev" type="string" value="/dev/input/js0" />
+    <param name="deadzone" value="0.12" />
+  </node>
+
+  <!-- Axes -->
+  <param name="axis_linear_X" value="1" type="int"/>
+  <param name="axis_linear_Y" value="0" type="int"/>
+  <param name="axis_linear_Z" value="4" type="int"/>
+  <param name="axis_angular_R" value="3" type="int"/>
+  <param name="axis_angular_P" value="4" type="int"/>
+  <param name="axis_angular_Y" value="1" type="int"/>
+
+  <param name="buttons_mode_XYZ" value="4" type="int"/>
+  <param name="buttons_mode_RPY" value="5" type="int"/>
+
+  <param name="scale_linear_X" value="2" type="double"/>
+  <param name="scale_linear_Y" value="2" type="double"/>
+  <param name="scale_linear_Z" value="2" type="double"/>
+  <param name="scale_angular_R" value="2" type="double"/>
+  <param name="scale_angular_P" value="2" type="double"/>
+  <param name="scale_angular_Y" value="2" type="double"/>
+
+  <node pkg="uam_arm" type="Joystick_node" name="Joystick_node"/>
+</launch>

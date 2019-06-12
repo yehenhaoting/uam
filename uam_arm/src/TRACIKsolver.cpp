@@ -26,7 +26,7 @@
 using namespace KDL;
 using namespace std;
 
-double x=0.12,y=0,z=0.2,w=100;
+double x=0.18,y=0,z=0.28,w=100;
 
 void chatterCallback(const geometry_msgs::Quaternion& msg)
 {
@@ -49,7 +49,7 @@ int main(int argc, char** argv)
 
 
     //Trac_IK
-    TRAC_IK::TRAC_IK tracik_solver("base_link", "end_link", "/robot_description", 0.005, 1E-5);
+    TRAC_IK::TRAC_IK tracik_solver("base_link", "end_link", "/robot_description", 0.005, 1E-5, TRAC_IK::Distance);
     KDL::Chain chain;
     KDL::JntArray ll, ul; //lower joint limits, upper joint limits
     bool valid = tracik_solver.getKDLChain(chain);
@@ -125,7 +125,8 @@ int main(int argc, char** argv)
     Frame kdl_cartpos6;
 
     //Rotation rot = Rotation(0.000796325,0.999999,-0.00079379,-2.01992e-9,0.00079379,1,1,-0.000796324,6.34135e-7);
-    Rotation rot = Rotation::RPY(1.5707963,0,1.5707963);
+    Rotation rot = Rotation::RPY(-1.5707963,0,-1.5707963);
+//    Rotation rot = Rotation::RPY(0,1.5708,0);
     sensor_msgs::JointState joint_state;
     int count=0;
     while(ros::ok()){
@@ -145,7 +146,7 @@ int main(int argc, char** argv)
             {
                 stringstream ss;
                 ss<<i;
-                joint_state.name[i] = "joint" + ss.str();
+                joint_state.name[i] = "revolute_joint_" + ss.str();
                 joint_state.position[i] = jointpositions(i);
                 nominal(i)=jointpositions(i);
             }
