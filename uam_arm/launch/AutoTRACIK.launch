@@ -1,5 +1,6 @@
 <launch>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <node pkg="uam_arm" name="TRACIKsolver" type="TRACIKsolver"/>
   <node pkg="uam_arm" name="KeyboardTeleopNode" type="KeyboardTeleopNode" />
   <!-- <node pkg="uam_arm" name="ftServo" type="ftServo" output="screen"/>  -->
@@ -26,4 +27,28 @@
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
   <node name="rviz" pkg="rviz" type="rviz" />
 >>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
+=======
+
+    <!-- URDF -->
+    <arg name="model" />
+    <arg name="gui" default="true" />
+    <param name="robot_description" textfile="$(find robot_urdf)/urdf/uav2.urdf" />
+    <!--<param name="robot_description" textfile="$(find robot_urdf)/urdf/robot_urdf_stillsuccess.urdf" />-->
+    <!--<param name="robot_description" textfile="$(find robot_urdf)/urdf/robot_urdf.urdf" />-->
+    <param name="use_gui" value="$(arg gui)" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+    <!--<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />-->
+    <node name="rviz" pkg="rviz" type="rviz" />
+
+    <!-- joystick node -->
+    <include file="$(find uam_arm)/launch/arm_joy.launch" />
+    <!--<node pkg="uam_arm" name="KeyboardTeleopNode" type="KeyboardTeleopNode" />-->
+
+    <!-- IK solver -->
+    <node pkg="uam_arm" name="TRACIKsolver" type="TRACIKsolver" output="screen"/>
+
+    <!-- Servo driver -->
+    <!--<node pkg="uam_arm" name="ftServo" type="ftServo" output="screen"/>-->
+
+>>>>>>> 31cb061caf1041fd79889e3255a8fe5c84f435c0
 </launch>

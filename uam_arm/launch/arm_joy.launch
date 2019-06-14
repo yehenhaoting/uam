@@ -1,0 +1,37 @@
+<launch>
+
+  <!-- joy node -->
+  <node respawn="true" pkg="joy"
+        type="joy_node" name="turtle_joy" >
+    <param name="dev" type="string" value="/dev/input/js0" />
+    <param name="deadzone" value="0.12" />
+  </node>
+
+  <!-- Axes -->
+  <param name="axis_linear_X" value="1" type="int"/>
+  <param name="axis_linear_Y" value="0" type="int"/>
+  <param name="axis_linear_Z" value="4" type="int"/>
+  <param name="axis_angular_R" value="0" type="int"/>
+  <param name="axis_angular_P" value="1" type="int"/>
+  <param name="axis_angular_Y" value="3" type="int"/>
+
+  <param name="buttons_mode_XYZ" value="4" type="int"/>
+  <param name="buttons_mode_RPY" value="5" type="int"/>
+  <param name="buttons_reset" value="0" type="int"/>
+
+  <param name="scale_linear_X" value="1.0" type="double"/>
+  <param name="scale_linear_Y" value="1.0" type="double"/>
+  <param name="scale_linear_Z" value="1.0" type="double"/>
+  <param name="scale_angular_R" value="6.28" type="double"/>
+  <param name="scale_angular_P" value="6.28" type="double"/>
+  <param name="scale_angular_Y" value="6.28" type="double"/>
+
+  <param name="EEpose_X" value="0.18" type="double"/>
+  <param name="EEpose_Y" value="0.00" type="double"/>
+  <param name="EEpose_Z" value="0.28" type="double"/>
+  <param name="EEorientation_R" value="0" type="double"/>
+  <param name="EEorientation_P" value="1.5708" type="double"/>
+  <param name="EEorientation_Y" value="0" type="double"/>
+
+  <node pkg="uam_arm" type="Joystick_node" name="Joystick_node" output="screen"/>
+</launch>

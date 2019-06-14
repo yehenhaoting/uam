@@ -1,7 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
-     Commit Version: 1.5.0-0-g9aa0fdb  Build Version: 1.5.7004.21443
-     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
   name="robot_urdf">
   <link
@@ -85,11 +81,7 @@
     </collision>
   </link>
   <joint
-<<<<<<< HEAD
     name="joint0"
-=======
-    name="revolute_joint_0"
->>>>>>> 31cb061caf1041fd79889e3255a8fe5c84f435c0
     type="revolute">
     <origin
       xyz="0 0 0.0411"
@@ -99,11 +91,7 @@
     <child
       link="link1" />
     <axis
-<<<<<<< HEAD
       xyz="0 0 -1" />
-=======
-      xyz="0 0 1" />
->>>>>>> 31cb061caf1041fd79889e3255a8fe5c84f435c0
     <limit
       lower="-3.1416"
       upper="3.1416"
@@ -153,19 +141,11 @@
     </collision>
   </link>
   <joint
-<<<<<<< HEAD
     name="joint1"
     type="revolute">
     <origin
       xyz="0 0 0.0331"
       rpy="1.5708 -1.5708 3.1416" />
-=======
-    name="revolute_joint_1"
-    type="revolute">
-    <origin
-      xyz="0 0 0.0331"
-      rpy="0 -1.5708 -1.5708" />
->>>>>>> 31cb061caf1041fd79889e3255a8fe5c84f435c0
     <parent
       link="link1" />
     <child
@@ -177,12 +157,8 @@
       upper="1.5708"
       effort="0"
       velocity="0" />
-<<<<<<< HEAD
     <safety_controller
       k_velocity="0" />
-=======
-
->>>>>>> 31cb061caf1041fd79889e3255a8fe5c84f435c0
   </joint>
   <link
     name="link3">
@@ -225,11 +201,7 @@
     </collision>
   </link>
   <joint
-<<<<<<< HEAD
     name="joint2"
-=======
-    name="revolute_joint_2"
->>>>>>> 31cb061caf1041fd79889e3255a8fe5c84f435c0
     type="revolute">
     <origin
       xyz="0.25 0 0"
@@ -239,7 +211,6 @@
     <child
       link="link3" />
     <axis
-<<<<<<< HEAD
       xyz="0 0 -1" />
     <limit
       lower="-2.3562"
@@ -248,14 +219,6 @@
       velocity="0" />
     <safety_controller
       k_velocity="0" />
-=======
-      xyz="0 0 1" />
-    <limit
-      lower="-2.618"
-      upper="2.618"
-      effort="0"
-      velocity="0" />
->>>>>>> 31cb061caf1041fd79889e3255a8fe5c84f435c0
   </joint>
   <link
     name="link4">
@@ -298,19 +261,11 @@
     </collision>
   </link>
   <joint
-<<<<<<< HEAD
     name="joint3"
     type="revolute">
     <origin
       xyz="0 0.2194 0"
       rpy="-1.5708 -1.5708 0" />
-=======
-    name="revolute_joint_3"
-    type="revolute">
-    <origin
-      xyz="0 0.2194 0"
-      rpy="0 -1.5708 -1.5708" />
->>>>>>> 31cb061caf1041fd79889e3255a8fe5c84f435c0
     <parent
       link="link3" />
     <child
@@ -318,19 +273,12 @@
     <axis
       xyz="0 0 1" />
     <limit
-<<<<<<< HEAD
       lower="-2.3562"
       upper="2.3562"
       effort="0"
       velocity="0" />
     <safety_controller
       k_velocity="0" />
-=======
-      lower="-3.1416"
-      upper="3.1416"
-      effort="0"
-      velocity="0" />
->>>>>>> 31cb061caf1041fd79889e3255a8fe5c84f435c0
   </joint>
   <link
     name="link5">
@@ -373,19 +321,11 @@
     </collision>
   </link>
   <joint
-<<<<<<< HEAD
     name="joint4"
     type="revolute">
     <origin
       xyz="0 0 0.026516"
       rpy="1.5708 -1.5708 0" />
-=======
-    name="revolute_joint_4"
-    type="revolute">
-    <origin
-      xyz="0 0 0.026516"
-      rpy="0 -1.5708 1.5708" />
->>>>>>> 31cb061caf1041fd79889e3255a8fe5c84f435c0
     <parent
       link="link4" />
     <child
@@ -397,11 +337,8 @@
       upper="1.5708"
       effort="0"
       velocity="0" />
-<<<<<<< HEAD
     <safety_controller
       k_velocity="0" />
-=======
->>>>>>> 31cb061caf1041fd79889e3255a8fe5c84f435c0
   </joint>
   <link
     name="link6">
@@ -444,11 +381,7 @@
     </collision>
   </link>
   <joint
-<<<<<<< HEAD
     name="joint5"
-=======
-    name="revolute_joint_5"
->>>>>>> 31cb061caf1041fd79889e3255a8fe5c84f435c0
     type="revolute">
     <origin
       xyz="0.02085 0.0017632 0"
@@ -464,23 +397,13 @@
       upper="2.3562"
       effort="0"
       velocity="0" />
-<<<<<<< HEAD
     <safety_controller
       k_velocity="0" />
-=======
-  </joint>
-
-  <joint    name="fixed_joint_0"    type="fixed">
-    <parent      link="link6" />
-    <child      link="end_link" />
-    <origin      xyz="0 0 0.07"      rpy="0 0 0" />
->>>>>>> 31cb061caf1041fd79889e3255a8fe5c84f435c0
   </joint>
 
   <link
     name="end_link">
   </link>
-<<<<<<< HEAD
   <joint
     name="fix_joint"
     type="fixed">
@@ -492,6 +415,4 @@
     <child
       link="end_link" />
   </joint>
-=======
->>>>>>> 31cb061caf1041fd79889e3255a8fe5c84f435c0
 </robot>

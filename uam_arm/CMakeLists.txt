@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
 )
 find_package(orocos_kdl)
 find_package(Boost REQUIRED COMPONENTS date_time)
+find_package(joy)
 
 generate_dynamic_reconfigure_options(
         cfg/uam_cfg.cfg
@@ -37,7 +38,11 @@ add_executable(KeyboardTeleopNode src/KeyboardTeleopNode.cpp)
 #add_executable(HololensServer src/HololensServer.cpp)
 add_executable(TRACIKsolver src/TRACIKsolver.cpp)
 add_executable(ftServo src/ftServo.cpp src/ftServo.h)
+<<<<<<< HEAD
 add_executable(test_servo src/test_servo.cpp src/ftServo.h)
+=======
+add_executable(Joystick_node src/Joystick_node.cpp)
+>>>>>>> 31cb061caf1041fd79889e3255a8fe5c84f435c0
 
 target_link_libraries(KeyboardTeleopNode ${catkin_LIBRARIES})
 target_link_libraries(ftServo ${catkin_LIBRARIES})
@@ -47,7 +52,12 @@ target_link_libraries(TRACIKsolver
   ${Boost_LIBRARIES}
   ${orocos_kdl_LIBRARIES}
 )
+<<<<<<< HEAD
 target_link_libraries(test_servo ${catkin_LIBRARIES})
+=======
+target_link_libraries(Joystick_node ${catkin_LIBRARIES})
+
+>>>>>>> 31cb061caf1041fd79889e3255a8fe5c84f435c0
 
 add_dependencies(KeyboardTeleopNode ${catkin_EXPORTED_TARGETS})
 #add_dependencies(HololensServer ${catkin_EXPORTED_TARGETS})
