@@ -17,13 +17,14 @@
 
   <param name="buttons_mode_XYZ" value="4" type="int"/>
   <param name="buttons_mode_RPY" value="5" type="int"/>
+  <param name="buttons_reset" value="0" type="int"/>
 
   <param name="scale_linear_X" value="1.0" type="double"/>
   <param name="scale_linear_Y" value="1.0" type="double"/>
   <param name="scale_linear_Z" value="1.0" type="double"/>
-  <param name="scale_angular_R" value="3.14" type="double"/>
-  <param name="scale_angular_P" value="3.14" type="double"/>
-  <param name="scale_angular_Y" value="3.14" type="double"/>
+  <param name="scale_angular_R" value="6.28" type="double"/>
+  <param name="scale_angular_P" value="6.28" type="double"/>
+  <param name="scale_angular_Y" value="6.28" type="double"/>
 
   <param name="EEpose_X" value="0.18" type="double"/>
   <param name="EEpose_Y" value="0.00" type="double"/>

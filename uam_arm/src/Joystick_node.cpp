@@ -7,11 +7,11 @@
 #include <geometry_msgs/Pose.h>
 #include <sensor_msgs/Joy.h>
 
-int linear_X, linear_Y, linear_Z, angular_R, angular_P, angular_Y, mode_XYZ, mode_RPY;
+int linear_X, linear_Y, linear_Z, angular_R, angular_P, angular_Y, mode_XYZ, mode_RPY, mode_reset;
 double l_scale_X, l_scale_Y, l_scale_Z, a_scale_R, a_scale_P, a_scale_Y;
 
 geometry_msgs::Twist vel_pub;
-geometry_msgs::Pose pose_pub;
+geometry_msgs::Pose pose_pub, pose_zero;
 
 void joy_init(ros::NodeHandle & nh_)
 {
@@ -23,6 +23,7 @@ void joy_init(ros::NodeHandle & nh_)
     nh_.param("axis_angular_Y", angular_Y, 3);
     nh_.param("buttons_mode_XYZ", mode_XYZ, 4);
     nh_.param("buttons_mode_RPY", mode_RPY, 5);
+    nh_.param("buttons_reset", mode_reset, 0);
 
     nh_.param("scale_linear_X", l_scale_X, 1.0);
     nh_.param("scale_linear_Y", l_scale_Y, 1.0);
@@ -34,12 +35,14 @@ void joy_init(ros::NodeHandle & nh_)
 
 void pose_init(ros::NodeHandle & nh_)
 {
-    pose_pub.position.x = 0.18;
-    pose_pub.position.y = 0.00;
-    pose_pub.position.z = 0.28;
-    pose_pub.orientation.x = 0.0;
-    pose_pub.orientation.y = 1.5708;
-    pose_pub.orientation.z = 0.0;
+    pose_zero.position.x = 0.18;
+    pose_zero.position.y = 0.00;
+    pose_zero.position.z = 0.28;
+    pose_zero.orientation.x = 0.0;
+    pose_zero.orientation.y = 1.5708;
+    pose_zero.orientation.z = 0.0;
+    pose_zero.orientation.w = 0.0;
+    pose_pub = pose_zero;
 }
 
 void pose_Integral()
@@ -76,6 +79,12 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
         vel_pub.angular.y = 0;
         vel_pub.angular.z = 0;
     }
+    if(joy->buttons[mode_reset])
+    {
+        pose_pub = pose_zero;
+    }
+    pose_pub.orientation.w = joy->buttons[mode_reset];
+
 }
 
 
