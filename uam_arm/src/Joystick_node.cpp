@@ -7,93 +7,103 @@
 #include <geometry_msgs/Pose.h>
 #include <sensor_msgs/Joy.h>
 
+int linear_X, linear_Y, linear_Z, angular_R, angular_P, angular_Y, mode_XYZ, mode_RPY;
+double l_scale_X, l_scale_Y, l_scale_Z, a_scale_R, a_scale_P, a_scale_Y;
 
-class TeleopArm
+geometry_msgs::Twist vel_pub;
+geometry_msgs::Pose pose_pub;
+
+void joy_init(ros::NodeHandle & nh_)
 {
-public:
-    TeleopArm();
+    nh_.param("axis_linear_X", linear_X, 1);
+    nh_.param("axis_linear_Y", linear_Y, 0);
+    nh_.param("axis_linear_Z", linear_Z, 4);
+    nh_.param("axis_angular_R", angular_R, 0);
+    nh_.param("axis_angular_P", angular_P, 1);
+    nh_.param("axis_angular_Y", angular_Y, 3);
+    nh_.param("buttons_mode_XYZ", mode_XYZ, 4);
+    nh_.param("buttons_mode_RPY", mode_RPY, 5);
 
-private:
-    void joyCallback(const sensor_msgs::Joy::ConstPtr& joy);
-
-    ros::NodeHandle nh_;
-
-//    int linear_, angular_;
-//    double l_scale_, a_scale_;
-//    ros::Publisher vel_pub_;
-//    ros::Subscriber joy_sub_;
-
-    int linear_X, linear_Y, linear_Z, angular_R, angular_P, angular_Y, mode_XYZ, mode_RPY;
-    double l_scale_X, l_scale_Y, l_scale_Z, a_scale_R, a_scale_P, a_scale_Y, m_scale_XYZ, m_scale_RPY;
-    ros::Publisher vel_pub_;
-    ros::Subscriber joy_sub_;
-
-};
-
-
-TeleopArm::TeleopArm():
-//        linear_(1),
-//        angular_(2)
-        linear_X(1), linear_Y(0), linear_Z(4),
-        angular_R(3), angular_P(4), angular_Y(1),
-        mode_XYZ(4), mode_RPY(5)
-{
-    nh_.param("axis_linear_X", linear_X, linear_X);
-    nh_.param("axis_linear_Y", linear_Y, linear_Y);
-    nh_.param("axis_linear_Z", linear_Z, linear_Z);
-    nh_.param("axis_angular_R", angular_R, angular_R);
-    nh_.param("axis_angular_P", angular_P, angular_P);
-    nh_.param("axis_angular_Y", angular_Y, angular_Y);
-    nh_.param("buttons_mode_XYZ", mode_XYZ, mode_XYZ);
-    nh_.param("buttons_mode_RPY", mode_RPY, mode_RPY);
-
-
-    nh_.param("scale_linear_X", l_scale_X, l_scale_X);
-    nh_.param("scale_linear_Y", l_scale_Y, l_scale_Y);
-    nh_.param("scale_linear_Z", l_scale_Z, l_scale_Z);
-    nh_.param("scale_angular_R", a_scale_R, a_scale_R);
-    nh_.param("scale_angular_P", a_scale_P, a_scale_P);
-    nh_.param("scale_angular_Y", a_scale_Y, a_scale_Y);
-//    nh_.param("scale_mode_XYZ", m_scale_XYZ, m_scale_XYZ);
-//    nh_.param("scale_mode_RPY", m_scale_RPY, m_scale_RPY);
-
-
-//    vel_pub_ = nh_.advertise<geometry_msgs::Twist>("turtle1/cmd_vel", 1);
-    vel_pub_ = nh_.advertise<geometry_msgs::Pose>("arm/cmd_vel", 1);
-
-
-    joy_sub_ = nh_.subscribe<sensor_msgs::Joy>("joy", 10, &TeleopArm::joyCallback, this);
-
+    nh_.param("scale_linear_X", l_scale_X, 1.0);
+    nh_.param("scale_linear_Y", l_scale_Y, 1.0);
+    nh_.param("scale_linear_Z", l_scale_Z, 1.0);
+    nh_.param("scale_angular_R", a_scale_R, 1.0);
+    nh_.param("scale_angular_P", a_scale_P, 1.0);
+    nh_.param("scale_angular_Y", a_scale_Y, 1.0);
 }
 
-void TeleopArm::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
+void pose_init(ros::NodeHandle & nh_)
 {
-    geometry_msgs::Twist twist;
-
-//    if(joy->buttons[mode_XYZ] && !joy->buttons[mode_RPY])
-    if(true)
-    {
-        twist.linear.x = l_scale_X*joy->axes[linear_X];
-        twist.linear.y = l_scale_Y*joy->axes[linear_Y];
-        twist.linear.z = l_scale_Z*joy->axes[linear_Z];
-    }
-
-//    if(joy->buttons[mode_RPY] && !joy->buttons[mode_XYZ])
-    if(true)
-    {
-        twist.angular.x = a_scale_R*joy->axes[angular_R];
-        twist.angular.y = a_scale_P*joy->axes[angular_P];
-        twist.angular.z = a_scale_Y*joy->axes[angular_Y];
-    }
-    vel_pub_.publish(twist);
+    pose_pub.position.x = 0.18;
+    pose_pub.position.y = 0.00;
+    pose_pub.position.z = 0.28;
+    pose_pub.orientation.x = 0.0;
+    pose_pub.orientation.y = 1.5708;
+    pose_pub.orientation.z = 0.0;
 }
+
+void pose_Integral()
+{
+    pose_pub.position.x += vel_pub.linear.x/1000;
+    pose_pub.position.y += vel_pub.linear.y/1000;
+    pose_pub.position.z += vel_pub.linear.z/1000;
+    pose_pub.orientation.x += vel_pub.angular.x/1000;
+    pose_pub.orientation.y += vel_pub.angular.y/1000;
+    pose_pub.orientation.z += vel_pub.angular.z/1000;
+}
+
+void joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
+{
+    if(joy->buttons[mode_XYZ] && !joy->buttons[mode_RPY])
+    {
+        vel_pub.linear.x = l_scale_X*joy->axes[linear_X];
+        vel_pub.linear.y = l_scale_Y*joy->axes[linear_Y];
+        vel_pub.linear.z = l_scale_Z*joy->axes[linear_Z];
+    }
+
+    if(joy->buttons[mode_RPY] && !joy->buttons[mode_XYZ])
+    {
+        vel_pub.angular.x = a_scale_R*joy->axes[angular_R];
+        vel_pub.angular.y = a_scale_P*joy->axes[angular_P];
+        vel_pub.angular.z = a_scale_Y*joy->axes[angular_Y];
+    }
+    if(!joy->buttons[mode_XYZ] && !joy->buttons[mode_RPY])
+    {
+        vel_pub.linear.x = 0;
+        vel_pub.linear.y = 0;
+        vel_pub.linear.z = 0;
+        vel_pub.angular.x = 0;
+        vel_pub.angular.y = 0;
+        vel_pub.angular.z = 0;
+    }
+}
+
 
 
 int main(int argc, char** argv)
 {
+
     ros::init(argc, argv, "teleop_arm");
+    ros::NodeHandle nh;
+    joy_init(nh);
+    pose_init(nh);
 
-        TeleopArm teleop_arm;
-        ros::spin();
+    ros::Subscriber joy_sub_ = nh.subscribe<sensor_msgs::Joy>("joy", 10, &joyCallback);
+    ros::Publisher vel_pub_  = nh.advertise<geometry_msgs::Twist>("arm/cmd_vel", 1000);
+    ros::Publisher pose_pub_ = nh.advertise<geometry_msgs::Pose>("arm/cmd_pose", 1);
 
+    ros::Rate loop_rate(100);
+
+
+    while(ros::ok())
+    {
+        ros::spinOnce();
+        vel_pub_.publish(vel_pub);
+
+        pose_Integral();
+        pose_pub_.publish(pose_pub);
+
+        loop_rate.sleep();
+    }
+    return 0;
 }

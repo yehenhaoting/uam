@@ -19,6 +19,7 @@
 #include "ros/ros.h"
 #include "sensor_msgs/JointState.h"
 #include <geometry_msgs/Quaternion.h>
+#include <geometry_msgs/Pose.h>
 #include "std_msgs/String.h"
 #include <sstream>
 #include <string>
@@ -26,15 +27,14 @@
 using namespace KDL;
 using namespace std;
 
-double x=0.18,y=0,z=0.28,w=100;
+Vector EE_xyz = Vector(0.18, 0.0, 0.28);
+Rotation EE_rpy = Rotation::RPY(0.0, 1.5708, 0.0);
 
-void chatterCallback(const geometry_msgs::Quaternion& msg)
+void pose_cb(const geometry_msgs::Pose& pose)
 {
-  x=msg.x;
-  y=msg.y;
-  z=msg.z;
-  w=msg.w;
-  cout<<"x:"<<x<<" y:"<<y<<" z:"<<z<<" w:"<<w<<endl;
+    EE_xyz = Vector(pose.position.x, pose.position.y, pose.position.z);
+    EE_rpy = Rotation::RPY(pose.orientation.x, pose.orientation.y, pose.orientation.z);
+
 }
 
 
@@ -44,7 +44,7 @@ int main(int argc, char** argv)
     ros::init(argc, argv, "talker");
     ros::NodeHandle n;
     ros::Publisher joint_state_pub = n.advertise<sensor_msgs::JointState>("/joint_states", 1);
-    ros::Subscriber joint_state_sub = n.subscribe("position", 1, chatterCallback);
+    ros::Subscriber EEpose_sub = n.subscribe("/arm/cmd_pose", 10, pose_cb);
     ros::Rate loop (50);
 
 
@@ -124,14 +124,10 @@ int main(int argc, char** argv)
     Frame kdl_cartpos5;
     Frame kdl_cartpos6;
 
-    //Rotation rot = Rotation(0.000796325,0.999999,-0.00079379,-2.01992e-9,0.00079379,1,1,-0.000796324,6.34135e-7);
-    Rotation rot = Rotation::RPY(-1.5707963,0,-1.5707963);
-//    Rotation rot = Rotation::RPY(0,1.5708,0);
     sensor_msgs::JointState joint_state;
     int count=0;
     while(ros::ok()){
-        Vector vector = Vector(x,y,z);
-        KDL::Frame cartpos = Frame(rot,vector);
+        KDL::Frame cartpos = Frame(EE_rpy, EE_xyz);
         KDL::JntArray jointpositions;
 
         int kinematics_status;
