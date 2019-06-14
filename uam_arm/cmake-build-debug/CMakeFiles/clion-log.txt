@@ -16,6 +16,7 @@
 -- Using CATKIN_DEVEL_PREFIX: /home/zm/uam_ws/src/uam_arm/cmake-build-debug/devel
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 -- Using CMAKE_PREFIX_PATH: /home/zm/uam_ws/devel;/home/zm/catkin_ws/devel;/opt/ros/kinetic
 -- This workspace overlays: /home/zm/uam_ws/devel;/home/zm/catkin_ws/devel;/opt/ros/kinetic
 =======
@@ -26,6 +27,10 @@
 -- Using CMAKE_PREFIX_PATH: /home/zm/catkin_moveit/devel;/home/zm/uam_ws/devel;/opt/ros/kinetic
 -- This workspace overlays: /home/zm/catkin_moveit/devel;/home/zm/uam_ws/devel;/opt/ros/kinetic
 >>>>>>> 3af868b... add reconfigure cfg for servo test
+=======
+-- Using CMAKE_PREFIX_PATH: /home/zm/catkin_moveit/devel;/home/zm/uam_ws/devel;/opt/ros/kinetic
+-- This workspace overlays: /home/zm/catkin_moveit/devel;/home/zm/uam_ws/devel;/opt/ros/kinetic
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
 -- Found PythonInterp: /usr/bin/python (found version "2.7.12") 
 -- Using PYTHON_EXECUTABLE: /usr/bin/python
 -- Using Debian Python package layout
@@ -46,6 +51,7 @@
 -- Found gtest sources under '/usr/src/gmock': gtests will be built
 -- Using Python nosetests: /usr/bin/nosetests-2.7
 -- catkin 0.7.14
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 -- Could NOT find kdl_parser (missing: kdl_parser_DIR)
@@ -71,6 +77,8 @@ See also "/home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeError.lo
 =======
 =======
 >>>>>>> 3af868b... add reconfigure cfg for servo test
+=======
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
 -- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
 -- Boost version: 1.58.0
 -- Found the following Boost libraries:
@@ -78,4 +86,7 @@ See also "/home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeError.lo
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/zm/uam_ws/src/uam_arm/cmake-build-debug
+<<<<<<< HEAD
 >>>>>>> 3af868b... add reconfigure cfg for servo test
+=======
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f

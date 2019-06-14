@@ -3,6 +3,7 @@ Change Dir: /home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeTmp
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/make" "cmTC_4f1e4/fast"
 /usr/bin/make -f CMakeFiles/cmTC_4f1e4.dir/build.make CMakeFiles/cmTC_4f1e4.dir/build
 make[1]: Entering directory '/home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeTmp'
@@ -38,6 +39,8 @@ Makefile:121: recipe for target 'cmTC_a8e49/fast' failed
 make: *** [cmTC_a8e49/fast] Error 2
 >>>>>>> 3af868b... add reconfigure cfg for servo test
 =======
+=======
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
 Run Build Command:"/usr/bin/make" "cmTC_a8e49/fast"
 /usr/bin/make -f CMakeFiles/cmTC_a8e49.dir/build.make CMakeFiles/cmTC_a8e49.dir/build
 make[1]: Entering directory '/home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeTmp'
@@ -54,7 +57,10 @@ make[1]: *** [cmTC_a8e49] Error 1
 make[1]: Leaving directory '/home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeTmp'
 Makefile:121: recipe for target 'cmTC_a8e49/fast' failed
 make: *** [cmTC_a8e49/fast] Error 2
+<<<<<<< HEAD
 >>>>>>> 3af868b... add reconfigure cfg for servo test
+=======
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
 
 File /home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -76,6 +82,7 @@ Change Dir: /home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeTmp
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 Run Build Command:"/usr/bin/make" "cmTC_3fd99/fast"
 /usr/bin/make -f CMakeFiles/cmTC_3fd99.dir/build.make CMakeFiles/cmTC_3fd99.dir/build
 make[1]: Entering directory '/home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeTmp'
@@ -94,6 +101,8 @@ make: *** [cmTC_3fd99/fast] Error 2
 =======
 =======
 >>>>>>> 3af868b... add reconfigure cfg for servo test
+=======
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
 Run Build Command:"/usr/bin/make" "cmTC_542f9/fast"
 /usr/bin/make -f CMakeFiles/cmTC_542f9.dir/build.make CMakeFiles/cmTC_542f9.dir/build
 make[1]: Entering directory '/home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeFiles/CMakeTmp'
@@ -110,8 +119,11 @@ make[1]: Leaving directory '/home/zm/uam_ws/src/uam_arm/cmake-build-debug/CMakeF
 Makefile:121: recipe for target 'cmTC_542f9/fast' failed
 make: *** [cmTC_542f9/fast] Error 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 3af868b... add reconfigure cfg for servo test
 =======
 >>>>>>> 3af868b... add reconfigure cfg for servo test
+=======
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
 
 

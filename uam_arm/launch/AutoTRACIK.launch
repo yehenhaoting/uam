@@ -1,4 +1,5 @@
 <launch>
+<<<<<<< HEAD
   <node pkg="uam_arm" name="TRACIKsolver" type="TRACIKsolver"/>
   <node pkg="uam_arm" name="KeyboardTeleopNode" type="KeyboardTeleopNode" />
   <!-- <node pkg="uam_arm" name="ftServo" type="ftServo" output="screen"/>  -->
@@ -13,4 +14,16 @@
 
   <node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure"> </node>
   
+=======
+  <!--<node pkg="uam_arm" name="TRACIKsolver" type="TRACIKsolver"/>-->
+  <!--<node pkg="uam_arm" name="KeyboardTeleopNode" type="KeyboardTeleopNode" />-->
+  <!--<node pkg="uam_arm" name="ftServo" type="ftServo" output="screen"/>-->
+  <arg name="model" />
+  <arg name="gui" default="true" />
+  <param name="robot_description" textfile="$(find robot_urdf)/urdf/robot_urdf.urdf" />
+  <param name="use_gui" value="$(arg gui)" />
+  <!--<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />-->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+  <node name="rviz" pkg="rviz" type="rviz" />
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
 </launch>

@@ -94,7 +94,11 @@ int main(int argc, char** argv)
     t.join();  
     tcsetattr(kfd, TCSANOW, &cooked);  
       
+<<<<<<< HEAD
     return(0);  
+=======
+    return 0;
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
 }  
   
 void SmartCarKeyboardTeleopNode::keyboardLoop()  

@@ -3,9 +3,12 @@
 #include <kdl/tree.hpp>
 #include <kdl/segment.hpp>
 #include <kdl/chainfksolver.hpp>
+<<<<<<< HEAD
 #include <kdl/chainfksolverpos_recursive.hpp>
 #include <kdl/chainfksolver.hpp>
 #include <kdl/chainiksolver.hpp>
+=======
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
 #include <kdl/chainiksolverpos_lma.hpp>
 #include <kdl/chainiksolverpos_nr.hpp>
 #include <kdl/chainiksolverpos_nr_jl.hpp>
@@ -14,6 +17,10 @@
 #include <kdl/frames_io.hpp>
 #include <kdl/frames.hpp>
 #include <trac_ik/trac_ik.hpp>
+<<<<<<< HEAD
+=======
+
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
 #include <stdio.h>
 #include <iostream>
 #include "ros/ros.h"
@@ -23,10 +30,15 @@
 #include <sstream>
 #include <string>
 
+<<<<<<< HEAD
 using namespace KDL;
 using namespace std;
 
 double x=0.12,y=0,z=-0.2,w=100;
+=======
+
+double x=0.25,y=0,z=0.32,w=100;
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
 
 void chatterCallback(const geometry_msgs::Quaternion& msg)
 {
@@ -34,7 +46,11 @@ void chatterCallback(const geometry_msgs::Quaternion& msg)
   y=msg.y;
   z=msg.z;
   w=msg.w;
+<<<<<<< HEAD
   cout<<"x:"<<x<<" y:"<<y<<" z:"<<z<<" w:"<<w<<endl;
+=======
+  std::cout<<"x:"<<x<<" y:"<<y<<" z:"<<z<<" w:"<<w<<std::endl;
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
 }
 
 
@@ -44,16 +60,28 @@ int main(int argc, char** argv)
     ros::init(argc, argv, "talker");
     ros::NodeHandle n;
     ros::Publisher joint_state_pub = n.advertise<sensor_msgs::JointState>("/joint_states", 1);
+<<<<<<< HEAD
     ros::Subscriber joint_state_sub = n.subscribe("position", 1, chatterCallback);
+=======
+    ros::Subscriber end_effector_sub = n.subscribe("position", 10, chatterCallback);
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
     ros::Rate loop (50);
 
 
     //Trac_IK
+<<<<<<< HEAD
     TRAC_IK::TRAC_IK tracik_solver("base_link", "ee_link", "/robot_description", 0.005, 1E-5);
     KDL::Chain chain;
     KDL::JntArray ll, ul; //lower joint limits, upper joint limits
     bool valid = tracik_solver.getKDLChain(chain);
  
+=======
+    TRAC_IK::TRAC_IK tracik_solver("base_link", "end_link", "/robot_description", 0.005, 1E-5, TRAC_IK::Speed); //TRAC_IK::SolveType  Distance
+    KDL::Chain chain;
+    KDL::JntArray ll, ul; //lower joint limits, upper joint limits
+    bool valid = tracik_solver.getKDLChain(chain);
+
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
     if (!valid) {
         ROS_ERROR("There was no valid KDL chain found");
         return 0;
@@ -72,6 +100,7 @@ int main(int argc, char** argv)
     unsigned int nj = chain.getNrOfJoints();
     for (uint j=0; j<nominal.data.size(); j++) {
         nominal(j) = (ll(j)+ul(j))/2.0;
+<<<<<<< HEAD
     } 
 
     //KDL
@@ -84,6 +113,15 @@ int main(int argc, char** argv)
     Chain kdl_chain4;
     Chain kdl_chain5;
     Chain kdl_chain6;
+=======
+    }
+
+    //KDL
+    KDL::Tree my_tree;
+    kdl_parser::treeFromFile("/home/zm/uam_ws/src/robot_urdf/urdf/robot_urdf.urdf",my_tree);
+
+    KDL::Chain kdl_chain1, kdl_chain2, kdl_chain3, kdl_chain4, kdl_chain5, kdl_chain6;
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
 
     my_tree.getChain("base_link","link1",kdl_chain1);
     my_tree.getChain("base_link","link2",kdl_chain2);
@@ -96,12 +134,21 @@ int main(int argc, char** argv)
     int maxiter=1000;
     double eps_joints=1E-15;
 
+<<<<<<< HEAD
     ChainFkSolverPos_recursive kdl_fksolver1 = ChainFkSolverPos_recursive(kdl_chain1);
     ChainFkSolverPos_recursive kdl_fksolver2 = ChainFkSolverPos_recursive(kdl_chain2);
     ChainFkSolverPos_recursive kdl_fksolver3 = ChainFkSolverPos_recursive(kdl_chain3);
     ChainFkSolverPos_recursive kdl_fksolver4 = ChainFkSolverPos_recursive(kdl_chain4);
     ChainFkSolverPos_recursive kdl_fksolver5 = ChainFkSolverPos_recursive(kdl_chain5);
     ChainFkSolverPos_recursive kdl_fksolver6 = ChainFkSolverPos_recursive(kdl_chain6);
+=======
+    KDL::ChainFkSolverPos_recursive kdl_fksolver1 = KDL::ChainFkSolverPos_recursive(kdl_chain1);
+    KDL::ChainFkSolverPos_recursive kdl_fksolver2 = KDL::ChainFkSolverPos_recursive(kdl_chain2);
+    KDL::ChainFkSolverPos_recursive kdl_fksolver3 = KDL::ChainFkSolverPos_recursive(kdl_chain3);
+    KDL::ChainFkSolverPos_recursive kdl_fksolver4 = KDL::ChainFkSolverPos_recursive(kdl_chain4);
+    KDL::ChainFkSolverPos_recursive kdl_fksolver5 = KDL::ChainFkSolverPos_recursive(kdl_chain5);
+    KDL::ChainFkSolverPos_recursive kdl_fksolver6 = KDL::ChainFkSolverPos_recursive(kdl_chain6);
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
 
     unsigned int nj1 = kdl_chain1.getNrOfJoints();
     unsigned int nj2 = kdl_chain2.getNrOfJoints();
@@ -110,6 +157,7 @@ int main(int argc, char** argv)
     unsigned int nj5 = kdl_chain5.getNrOfJoints();
     unsigned int nj6 = kdl_chain6.getNrOfJoints();
 
+<<<<<<< HEAD
     JntArray kdl_jointpositions1 = JntArray(nj1);
     JntArray kdl_jointpositions2 = JntArray(nj2);
     JntArray kdl_jointpositions3 = JntArray(nj3);
@@ -131,22 +179,56 @@ int main(int argc, char** argv)
     while(ros::ok()){
         Vector vector = Vector(x,y,z);
         KDL::Frame cartpos = Frame(rot,vector);
+=======
+    KDL::JntArray kdl_jointpositions1 = KDL::JntArray(nj1);
+    KDL::JntArray kdl_jointpositions2 = KDL::JntArray(nj2);
+    KDL::JntArray kdl_jointpositions3 = KDL::JntArray(nj3);
+    KDL::JntArray kdl_jointpositions4 = KDL::JntArray(nj4);
+    KDL::JntArray kdl_jointpositions5 = KDL::JntArray(nj5);
+    KDL::JntArray kdl_jointpositions6 = KDL::JntArray(nj6);
+
+
+    KDL::Frame kdl_cartpos1, kdl_cartpos2, kdl_cartpos3, kdl_cartpos4, kdl_cartpos5, kdl_cartpos6;
+
+    KDL::Rotation rot = KDL::Rotation::RPY(-1.5707963,1.5707963,0);
+    sensor_msgs::JointState joint_state;
+    int count=0;
+    while(ros::ok()){
+
+        KDL::Vector vector(x,y,z);
+
+        KDL::Frame cartpos = KDL::Frame(rot,vector);
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
         KDL::JntArray jointpositions;
 
         int kinematics_status;
         kinematics_status = tracik_solver.CartToJnt(nominal,cartpos,jointpositions);
+<<<<<<< HEAD
 
         if(kinematics_status)
+=======
+//        kinematics_status = 1;
+
+        if(kinematics_status >= 0)
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
         {
             joint_state.header.stamp = ros::Time::now();
             joint_state.name.resize(nj);
             joint_state.position.resize(nj);
             for(int i=0;i<nj;i++)
             {
+<<<<<<< HEAD
                 stringstream ss;
                 ss<<i;
                 joint_state.name[i] = "revolute_joint_" + ss.str();
                 joint_state.position[i] = jointpositions(i);
+=======
+                std::stringstream ss;
+                ss<<i;
+                joint_state.name[i] = "joint" + ss.str();
+                joint_state.position[i] = jointpositions(i);
+                std::cout<<jointpositions(i)<<std::endl;
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
                 nominal(i)=jointpositions(i);
             }
             for(unsigned int i=0;i<nj1;i++){
@@ -174,16 +256,33 @@ int main(int argc, char** argv)
             kdl_fksolver4.JntToCart( kdl_jointpositions4,kdl_cartpos4);
             kdl_fksolver5.JntToCart( kdl_jointpositions5,kdl_cartpos5);
             kdl_fksolver6.JntToCart( kdl_jointpositions6,kdl_cartpos6);
+<<<<<<< HEAD
             if(kdl_cartpos6.p.z()<-0.035&&kdl_cartpos5.p.z()<-0.035&&kdl_cartpos4.p.z()<-0.035&&kdl_cartpos3.p.z()<-0.035&&kdl_cartpos2.p.z()<-0.035)
+=======
+            if(kdl_cartpos6.p.z() > 0.035 && kdl_cartpos5.p.z() > 0.035 && kdl_cartpos4.p.z() > 0.035 && kdl_cartpos3.p.z() > 0.035 && kdl_cartpos2.p.z() > 0.035)
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
             {
                 joint_state_pub.publish(joint_state);
             }
         }
+<<<<<<< HEAD
         else{cout<<"error!!!!!"<<endl;}
 
         cout<<kdl_cartpos1.p<<"_"<<kdl_cartpos2.p<<"_"<<kdl_cartpos3.p<<"_"<<kdl_cartpos4.p<<"_"<<kdl_cartpos5.p<<"_"<<kdl_cartpos6.p<<endl;
+=======
+        else{std::cout<<"error!!!!!"<<std::endl;
+
+        }
+
+//        std::cout<<kdl_cartpos1.p<<"_"<<kdl_cartpos2.p<<"_"<<kdl_cartpos3.p<<"_"<<kdl_cartpos4.p<<"_"<<kdl_cartpos5.p<<"_"<<kdl_cartpos6.p<<std::endl;
+//        std::cout<<kdl_cartpos6.p<<std::endl;
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
         ros::spinOnce();
         loop.sleep();
     }
 
+<<<<<<< HEAD
+=======
+    return 0;
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
 }

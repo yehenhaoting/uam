@@ -55,3 +55,12 @@ add_dependencies(ftServo ${catkin_EXPORTED_TARGETS})
 add_dependencies(test_servo ${catkin_EXPORTED_TARGETS})
 
 
+<<<<<<< HEAD
+=======
+add_executable(ik_test src/ik_test.cpp)
+target_link_libraries(ik_test
+        ${catkin_LIBRARIES}
+        ${Boost_LIBRARIES}
+        ${orocos_kdl_LIBRARIES}
+        )
+>>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
