@@ -2,12 +2,9 @@
 #include "ftServo.h"
 #include <string>
 
-<<<<<<< HEAD
 #include <dynamic_reconfigure/server.h>
 #include <uam_arm/uam_Config.h>
 
-=======
->>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
 using namespace std;
 int servo_position1=3109;
 int servo_position2=2521;
@@ -17,7 +14,6 @@ int servo_position5=411;
 int servo_position6=470;
 int servo_position7=100;
 double x=0.12,y=0,z=-0.2;
-<<<<<<< HEAD
 
 uam_arm::uam_Config servo_trim;
 
@@ -43,16 +39,7 @@ void chatterCallback(const sensor_msgs::JointState& msg)
     servo_position4=(-msg.position[3]+servo_trim.trim_4)/2.618*511+511;
     servo_position5=(-msg.position[4]+servo_trim.trim_5)/2.618*511+511;
     servo_position6=(-msg.position[5]+servo_trim.trim_6)/2.618*511+511;    
-=======
-void chatterCallback(const sensor_msgs::JointState& msg)
-{
-    servo_position1=(msg.position[0]+1.5707963)/3.1415926*2047+2047;
-    servo_position2=(msg.position[1]-0.32)/3.1415926*2047+2047;
-    servo_position3=(msg.position[2]+0.4707963)/2.618*511+511;
-    servo_position4=(-msg.position[3]+0.02)/2.618*511+511;
-    servo_position5=(-msg.position[4]-0.45)/2.618*511+511;
-    servo_position6=(-msg.position[5]-0.12)/2.618*511+511;
->>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
+
     cout<<servo_position1<<"-"<<servo_position2<<"-"<<servo_position3<<"-"<<servo_position4<<"-"<<servo_position5<<"-"<<servo_position6<<"-"<<servo_position7<<endl;
 }
 void chatterCallback2(const geometry_msgs::Quaternion& msg)
@@ -86,15 +73,13 @@ int main(int argc, char** argv)
     //unsigned char cmdBuffer[30] = {0xff, 0xff, 0x04, 0x09, 0x03, 0x2a, 0x00, 0x64, 0x00, 0x64, 0x00, 0x00, 0xfd,0xff, 0xff, 0x05, 0x09, 0x03, 0x2a, 0x00, 0x64, 0x00, 0x64, 0x00, 0x00, 0xfc};
     ros::init(argc, argv, "ftServo");
     ros::NodeHandle n;
-<<<<<<< HEAD
+
 
     dynamic_reconfigure::Server<uam_arm::uam_Config> server;
     dynamic_reconfigure::Server<uam_arm::uam_Config>::CallbackType ff;
     ff = boost::bind(&joint_state_cb, _1, _2);
     server.setCallback(ff);
 
-=======
->>>>>>> d4895e3771e61fb031a25039ae990c8c0d6d995f
     ros::Subscriber joint_state_sub = n.subscribe("/joint_states", 1, chatterCallback);
     ros::Subscriber position_sub = n.subscribe("position", 1, chatterCallback2);
     ros::Rate loop (50);
