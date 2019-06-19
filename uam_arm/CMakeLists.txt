@@ -8,10 +8,12 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   kdl_parser
   trac_ik_lib
+        tf
 )
 find_package(orocos_kdl)
 find_package(Boost REQUIRED COMPONENTS date_time)
 find_package(joy)
+#find_package(tf)
 
 ## Declare a catkin package
 catkin_package(
@@ -49,4 +51,6 @@ add_dependencies(KeyboardTeleopNode ${catkin_EXPORTED_TARGETS})
 add_dependencies(HololensServer ${catkin_EXPORTED_TARGETS})
 add_dependencies(ftServo ${catkin_EXPORTED_TARGETS})
 
+add_executable(drone_tf_broadcaster src/drone_tf_broadcaster.cpp)
+target_link_libraries(drone_tf_broadcaster ${catkin_LIBRARIES})
 
