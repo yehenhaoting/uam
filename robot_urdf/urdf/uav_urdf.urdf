@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.0-0-g9aa0fdb  Build Version: 1.5.7004.21443
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="uav_urdf">
+  <link
+    name="uav_link">
+    <inertial>
+      <origin
+        xyz="0.0 0.0 0.0"
+        rpy="0 0 0" />
+      <mass
+        value="3.54035" />
+      <inertia
+        ixx="8.9997"
+        ixy="-3.6726E-02"
+        ixz="-0.0023018"
+        iyy="8.9997"
+        iyz="-3.1189E-02"
+        izz="2.5882" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/meshes/uav800.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.7 0.8 0.9 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_urdf/meshes/uav800.STL" />
+      </geometry>
+    </collision>
+  </link>
+ 
+</robot>
