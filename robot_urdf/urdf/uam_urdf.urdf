@@ -5,24 +5,10 @@
 <robot name="uam_urdf">
  <link
     name="uav_link">
-    <inertial>
-      <origin
-        xyz="0.0 0.0 0.0"
-        rpy="0 0 0" />
-      <mass
-        value="0.354035" />
-      <inertia
-        ixx="0.89997"
-        ixy="-3.6726E-03"
-        ixz="-0.0023018"
-        iyy="0.89997"
-        iyz="-3.1189E-03"
-        izz="0.25882" />
-    </inertial>
     <visual>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 0 1.5708" />
       <geometry>
         <mesh
           filename="package://robot_urdf/meshes/uav800_small.STL" />
@@ -227,7 +213,7 @@
   <joint name="fixed_joint_0" type="fixed"> 
   <parent link="link6"/> 
   <child link="end_link"/> 
-  <origin xyz="0 0 0.07" rpy="0 0 0"/> 
+  <origin xyz="0 0 0.07" rpy="3.1416 -1.5708 0"/> 
   </joint>
 
   <link name="end_link">
