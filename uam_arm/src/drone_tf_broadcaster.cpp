@@ -18,7 +18,7 @@ int main(int argc, char** argv){
     geometry_msgs::PoseStamped pose_drone;
 
 
-    ros::Publisher base_pub = node.advertise< geometry_msgs::PoseStamped >("arm/base_pose", 10);
+    ros::Publisher base_pub = node.advertise< geometry_msgs::PoseStamped >("arm/uav_pose", 10);
 
 
     ros::Rate rate(100.0);

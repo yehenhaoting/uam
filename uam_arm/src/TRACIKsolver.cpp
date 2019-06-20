@@ -24,6 +24,10 @@
 #include "std_msgs/String.h"
 #include <sstream>
 #include <string>
+#include <Eigen/Core>
+#include <Eigen/Geometry>
+
+#define PI (3.1415926535897932346f)
 
 using namespace KDL;
 using namespace std;
@@ -31,42 +35,64 @@ using namespace std;
 Vector EE_xyz = Vector(0.18, 0.0, 0.28);
 Rotation EE_rpy = Rotation::RPY(0.0, 1.5708, 0.0);
 
-KDL::Vector Base_xyz = KDL::Vector(0, 0, 0);
-KDL::Rotation Base_rot = KDL::Rotation::Quaternion(0, 0, 0, 1);
-
+KDL::Vector UAV_xyz = KDL::Vector(0, 0, 0);
+KDL::Rotation UAV_rot = KDL::Rotation::Quaternion(0, 0, 0, 1);
 
 bool joint_pub_flag = true;
 bool reset_flag = false;
 
-void pose_cb(const geometry_msgs::Pose& pose)
+geometry_msgs::Quaternion euler2quaternion(float roll, float pitch, float yaw);
+
+void EE_pose_cb(const geometry_msgs::Pose &pose)
 {
     EE_xyz = KDL::Vector(pose.position.x, pose.position.y, pose.position.z);
     EE_rpy = KDL::Rotation::RPY(pose.orientation.x, pose.orientation.y, pose.orientation.z);
+////    EE_rpy = KDL::Rotation::EulerZYX(pose.orientation.x, pose.orientation.y, pose.orientation.z);
+////    geometry_msgs::Quaternion temp_quat = euler2quaternion(pose.orientation.x, pose.orientation.y, pose.orientation.z);
+////    EE_rpy = KDL::Rotation::Quaternion(temp_quat.x, temp_quat.y, temp_quat.z, temp_quat.w);
+//
+//    Eigen::Matrix3d rot_matrix;
+//    rot_matrix = Eigen::AngleAxisd(pose.orientation.x, Eigen::Vector3d::UnitZ()) *
+//                       Eigen::AngleAxisd(pose.orientation.y, Eigen::Vector3d::UnitY()) *
+//                       Eigen::AngleAxisd(pose.orientation.z, Eigen::Vector3d::UnitX());
+//    EE_rpy = KDL::Rotation(rot_matrix(0,0), rot_matrix(0,1), rot_matrix(0,2), rot_matrix(1,0), rot_matrix(1,1), rot_matrix(1,2), rot_matrix(2,0), rot_matrix(2,1), rot_matrix(2,2));
+//
+//    std::cout << rot_matrix <<std::endl;
+//    std::cout << pose.orientation.x <<"\t"<<pose.orientation.y<<"\t"<<pose.orientation.z<<std::endl<<std::endl;
     reset_flag = bool(pose.orientation.w);
 
 }
 
-void base_cb(const geometry_msgs::PoseStamped& msg)
+void uav_pose_cb(const geometry_msgs::PoseStamped &msg)
 {
-    Base_xyz = KDL::Vector(msg.pose.position.x, -msg.pose.position.y, msg.pose.position.z);
-    Base_rot = KDL::Rotation::Quaternion(msg.pose.orientation.x, msg.pose.orientation.y, msg.pose.orientation.z, msg.pose.orientation.w);
+    UAV_xyz = KDL::Vector(msg.pose.position.x, msg.pose.position.y, msg.pose.position.z);
+    UAV_rot = KDL::Rotation::Quaternion(msg.pose.orientation.x, msg.pose.orientation.y, msg.pose.orientation.z, msg.pose.orientation.w);
+}
+
+geometry_msgs::Quaternion euler2quaternion(float roll, float pitch, float yaw)
+{
+    geometry_msgs::Quaternion temp;
+    temp.w = cos(roll/2)*cos(pitch/2)*cos(yaw/2) + sin(roll/2)*sin(pitch/2)*sin(yaw/2);
+    temp.x = sin(roll/2)*cos(pitch/2)*cos(yaw/2) - cos(roll/2)*sin(pitch/2)*sin(yaw/2);
+    temp.y = cos(roll/2)*sin(pitch/2)*cos(yaw/2) + sin(roll/2)*cos(pitch/2)*sin(yaw/2);
+    temp.z = cos(roll/2)*cos(pitch/2)*sin(yaw/2) - sin(roll/2)*sin(pitch/2)*cos(yaw/2);
+    return temp;
 }
 
 
 int main(int argc, char** argv)
 {
     //ros
-    ros::init(argc, argv, "talker");
+    ros::init(argc, argv, "trac_ik_solver");
     ros::NodeHandle n;
     ros::Publisher joint_state_pub = n.advertise<sensor_msgs::JointState>("/joint_states", 1);
-    ros::Subscriber EE_pose_sub = n.subscribe("/arm/cmd_pose", 10, pose_cb);
-    ros::Subscriber Base_pose_sub = n.subscribe("/arm/base_pose", 10, base_cb);
+    ros::Subscriber EE_pose_sub = n.subscribe("/arm/cmd_pose", 10, EE_pose_cb);
+    ros::Subscriber Base_pose_sub = n.subscribe("/arm/uav_pose", 10, uav_pose_cb);
     ros::Rate loop (50);
 
 
     //Trac_IK
-//    TRAC_IK::TRAC_IK tracik_solver("base_link", "end_link", "/robot_description", 0.005, 1E-5, TRAC_IK::Distance);
-    TRAC_IK::TRAC_IK tracik_solver("uav_link", "end_link", "/robot_description", 0.005, 1E-5, TRAC_IK::Distance);
+    TRAC_IK::TRAC_IK tracik_solver("base_link", "end_link", "/robot_description", 0.005, 1E-5, TRAC_IK::Distance);
     KDL::Chain chain;
     KDL::JntArray ll, ul; //lower joint limits, upper joint limits
     bool valid = tracik_solver.getKDLChain(chain);
@@ -112,15 +138,14 @@ int main(int argc, char** argv)
         KDL::Frame cartpos_init;
         KDL::JntArray result;
 
-        KDL::Frame F_baselink__EElink = KDL::Frame(EE_rpy, EE_xyz);
-        KDL::Frame F_world_uavlink = KDL::Frame(Base_rot, Base_xyz);
-        KDL::Frame F_uavlink_baselink = KDL::Frame(KDL::Rotation::RPY(3.1416, 0, 0), KDL::Vector(0,0,0));
-        KDL::Frame cartpos = F_uavlink_baselink.Inverse() * F_world_uavlink.Inverse() * F_baselink__EElink;
-//        KDL::Frame cartpos = F_uavlink_baselink * F_baselink__EElink;
+        KDL::Frame F_world_EE  = KDL::Frame(EE_rpy, EE_xyz);
+        KDL::Frame F_world_uav = KDL::Frame(UAV_rot, UAV_xyz);
+        KDL::Frame F_uav_base  = KDL::Frame(KDL::Rotation::RPY(3.1416, 0, 0), KDL::Vector(0, 0, -0.06));
+        KDL::Frame F_base_EE   = F_uav_base.Inverse() * F_world_uav.Inverse() * F_world_EE;
 
 
         int kinematics_status;
-        kinematics_status = tracik_solver.CartToJnt(nominal,cartpos,result);
+        kinematics_status = tracik_solver.CartToJnt(nominal,F_base_EE,result);
 
         if(kinematics_status >= 0)
         {
@@ -136,14 +161,14 @@ int main(int argc, char** argv)
             }
             if(count < 10)
             {
-                cartpos_init = cartpos;
+                cartpos_init = F_base_EE;
             }
 
             KDL::JntArray delta;
             KDL::Subtract(result, nominal, delta);
             for(unsigned int i=0;i<nj-3;i++)
             {
-                if(abs(delta(i)) > 0.314 && count > 1 && !reset_flag)
+                if(abs(delta(i)) > 0.314 && count > 100 && !reset_flag)     //count 避免启动瞬间的大位移无法求解现象
                 {
                     ROS_WARN_STREAM("Rapid Rotation, unsafe for Arm! ");
                     joint_pub_flag = false;

@@ -37,10 +37,10 @@ void pose_init(ros::NodeHandle & nh_)
 {
     pose_zero.position.x = 0.18;
     pose_zero.position.y = 0.00;
-    pose_zero.position.z = 0.28;
+    pose_zero.position.z = -0.20;
     pose_zero.orientation.x = 0.0;
-    pose_zero.orientation.y = 1.5708;
-    pose_zero.orientation.z = 0.0;
+    pose_zero.orientation.y = -1.5708;
+    pose_zero.orientation.z = 3.1416;
     pose_zero.orientation.w = 0.0;
     pose_pub = pose_zero;
 }

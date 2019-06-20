@@ -85,10 +85,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bea0bdb6-b1d6-4801-a167-e6c3789c898f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../robot_urdf/urdf/uam_urdf.urdf" beforeDir="false" afterPath="$PROJECT_DIR$/../robot_urdf/urdf/uam_urdf.urdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/launch/AutoTRACIK.launch" beforeDir="false" afterPath="$PROJECT_DIR$/launch/AutoTRACIK.launch" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/launch/uav.launch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/launch/arm_joy.launch" beforeDir="false" afterPath="$PROJECT_DIR$/launch/arm_joy.launch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Joystick_node.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Joystick_node.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TRACIKsolver.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/TRACIKsolver.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/drone_tf_broadcaster.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/drone_tf_broadcaster.cpp" afterDir="false" />
     </list>
@@ -128,7 +127,7 @@
         <counts>
           <entry key="CMakeLists.txt" value="13" />
           <entry key="Ini" value="6" />
-          <entry key="ObjectiveC" value="86" />
+          <entry key="ObjectiveC" value="91" />
           <entry key="roslaunch" value="19" />
         </counts>
       </usages-collector>
@@ -144,9 +143,9 @@
         <counts>
           <entry key="CMakeLists.txt" value="185" />
           <entry key="Ini" value="181" />
-          <entry key="ObjectiveC" value="3787" />
-          <entry key="PLAIN_TEXT" value="252" />
-          <entry key="roslaunch" value="470" />
+          <entry key="ObjectiveC" value="4051" />
+          <entry key="PLAIN_TEXT" value="290" />
+          <entry key="roslaunch" value="479" />
         </counts>
       </usages-collector>
     </session>
@@ -165,8 +164,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Joystick_node.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="779">
-              <caret line="41" column="30" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
+            <state relative-caret-position="477">
+              <caret line="42" column="30" lean-forward="true" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -175,7 +174,7 @@
         <entry file="file://$PROJECT_DIR$/launch/arm_joy.launch">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="570">
-              <caret line="30" column="47" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
+              <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -183,7 +182,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/launch/AutoTRACIK.launch">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
+            <state relative-caret-position="228">
               <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
@@ -192,8 +191,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TRACIKsolver.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="119" lean-forward="true" selection-start-line="119" selection-end-line="119" />
+            <state relative-caret-position="79">
+              <caret line="49" column="6" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="6" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -202,10 +201,37 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file:///usr/include/eigen3/Eigen/src/Core/Matrix.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1667">
+              <caret line="450" column="54" selection-start-line="450" selection-start-column="54" selection-end-line="450" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///opt/ros/kinetic/include/kdl/frames.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="308" column="18" selection-start-line="308" selection-start-column="18" selection-end-line="308" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///opt/ros/kinetic/include/kdl/frames.inl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="508">
+              <caret line="497" column="29" selection-start-line="497" selection-start-column="27" selection-end-line="497" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/drone_tf_broadcaster.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="40" column="37" lean-forward="true" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
+            <state relative-caret-position="380">
+              <caret line="20" column="83" selection-start-line="20" selection-start-column="83" selection-end-line="20" selection-end-column="83" />
               <folding>
                 <element signature="e#36#56#0" expanded="true" />
               </folding>
@@ -217,10 +243,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>vector</find>
-      <find>kdl_parser</find>
-      <find>tracik_solver</find>
-      <find>link</find>
       <find>ul</find>
       <find>Could not generate robot model</find>
       <find>kdl_chain6</find>
@@ -239,7 +261,6 @@
       <find>pose_cb</find>
       <find>nominal</find>
       <find>nj</find>
-      <find>count</find>
       <find>joint_init</find>
       <find>.z</find>
       <find>_Y</find>
@@ -247,6 +268,11 @@
       <find>Basepose_sub</find>
       <find>EE_rpy</find>
       <find>multiplication</find>
+      <find>F_baselink__EElink</find>
+      <find>count</find>
+      <find>UAV_xyz</find>
+      <find>RPY</find>
+      <find>Frame</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -270,9 +296,9 @@
         <option value="$PROJECT_DIR$/src/KeyboardTeleopNode.cpp" />
         <option value="$PROJECT_DIR$/launch/uav.launch" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/src/Joystick_node.cpp" />
-        <option value="$PROJECT_DIR$/launch/arm_joy.launch" />
         <option value="$PROJECT_DIR$/launch/AutoTRACIK.launch" />
+        <option value="$PROJECT_DIR$/launch/arm_joy.launch" />
+        <option value="$PROJECT_DIR$/src/Joystick_node.cpp" />
         <option value="$PROJECT_DIR$/src/drone_tf_broadcaster.cpp" />
         <option value="$PROJECT_DIR$/src/TRACIKsolver.cpp" />
       </list>
@@ -868,7 +894,7 @@
       <workItem from="1560496618828" duration="8411000" />
       <workItem from="1560565109523" duration="15000" />
       <workItem from="1560924403839" duration="13477000" />
-      <workItem from="1560995749852" duration="3935000" />
+      <workItem from="1560995749852" duration="13419000" />
     </task>
     <task id="LOCAL-00001" summary="change path of URDF in TRACIKsolver.cpp">
       <created>1557811616699</created>
@@ -968,11 +994,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560943621945</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="first ok, Frame still wrong">
+      <created>1561000369047</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1561000369047</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124598000" />
+    <option name="totallyTimeSpent" value="134082000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="125" width="1857" height="1092" extended-state="6" />
@@ -1018,7 +1051,8 @@
     <MESSAGE value="avoid rapid turn; add reset" />
     <MESSAGE value="test ok for float base" />
     <MESSAGE value="add urdf of uav" />
-    <option name="LAST_COMMIT_MESSAGE" value="add urdf of uav" />
+    <MESSAGE value="first ok, Frame still wrong" />
+    <option name="LAST_COMMIT_MESSAGE" value="first ok, Frame still wrong" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///usr/include/geos_c.h">
@@ -1096,13 +1130,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1197">
           <caret line="63" column="18" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///opt/ros/kinetic/include/trac_ik/trac_ik.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="548">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
         </state>
       </provider>
     </entry>
@@ -1211,13 +1238,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///opt/ros/kinetic/include/kdl/frames.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1079">
-          <caret line="353" selection-start-line="353" selection-end-line="353" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/launch/uam_joy.launch" />
     <entry file="file://$PROJECT_DIR$/launch/uav.launch" />
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
@@ -1227,48 +1247,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Joystick_node.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="779">
-          <caret line="41" column="30" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/launch/arm_joy.launch">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
-          <caret line="30" column="47" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/launch/AutoTRACIK.launch">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/drone_tf_broadcaster.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="40" column="37" lean-forward="true" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
+        <state relative-caret-position="380">
+          <caret line="20" column="83" selection-start-line="20" selection-start-column="83" selection-end-line="20" selection-end-column="83" />
           <folding>
             <element signature="e#36#56#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Joystick_node.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="42" column="30" lean-forward="true" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/launch/AutoTRACIK.launch">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///opt/ros/kinetic/include/trac_ik/trac_ik.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="50" column="179" selection-start-line="50" selection-start-column="174" selection-end-line="50" selection-end-column="179" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file:///opt/ros/kinetic/include/kdl/frames.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-228">
-          <caret line="48" column="22" lean-forward="true" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
+        <state relative-caret-position="432">
+          <caret line="308" column="18" selection-start-line="308" selection-start-column="18" selection-end-line="308" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///opt/ros/kinetic/include/kdl/frames.inl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="497" column="29" selection-start-line="497" selection-start-column="27" selection-end-line="497" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/eigen3/Eigen/src/Core/Matrix.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1667">
+          <caret line="450" column="54" selection-start-line="450" selection-start-column="54" selection-end-line="450" selection-end-column="54" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TRACIKsolver.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="119" lean-forward="true" selection-start-line="119" selection-end-line="119" />
+        <state relative-caret-position="79">
+          <caret line="49" column="6" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="6" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>

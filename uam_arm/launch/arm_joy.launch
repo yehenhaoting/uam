@@ -28,10 +28,10 @@
 
   <param name="EEpose_X" value="0.18" type="double"/>
   <param name="EEpose_Y" value="0.00" type="double"/>
-  <param name="EEpose_Z" value="0.28" type="double"/>
+  <param name="EEpose_Z" value="-0.20" type="double"/>
   <param name="EEorientation_R" value="0" type="double"/>
-  <param name="EEorientation_P" value="1.5708" type="double"/>
-  <param name="EEorientation_Y" value="0" type="double"/>
+  <param name="EEorientation_P" value="-1.5708" type="double"/>
+  <param name="EEorientation_Y" value="3.1416" type="double"/>
 
   <node pkg="uam_arm" type="Joystick_node" name="Joystick_node" output="screen"/>
 </launch>
