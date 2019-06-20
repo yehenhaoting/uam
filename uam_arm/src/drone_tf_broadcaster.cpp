@@ -23,7 +23,7 @@ int main(int argc, char** argv){
 
     ros::Rate rate(100.0);
     while (node.ok()){
-        transform.setOrigin( tf::Vector3(-0.05 + 0.05*sin(ros::Time::now().toSec()), 0.05*cos(ros::Time::now().toSec()), -0.05) );
+        transform.setOrigin( tf::Vector3(-0.05 + 0.05*sin(ros::Time::now().toSec()), 0.05*cos(ros::Time::now().toSec()), 0.05) );
         transform.setRotation( tf::Quaternion(0, 0, 0, 1) );
 
 
@@ -31,13 +31,13 @@ int main(int argc, char** argv){
         pose_drone.header.stamp = ros::Time::now();
         pose_drone.pose.position.x = -0.05 + 0.05*sin(ros::Time::now().toSec());
         pose_drone.pose.position.y = 0.05*cos(ros::Time::now().toSec());
-        pose_drone.pose.position.z = -0.05;
+        pose_drone.pose.position.z = 0.05;
         pose_drone.pose.orientation.x = 0;
         pose_drone.pose.orientation.y = 0;
         pose_drone.pose.orientation.z = 0;
         pose_drone.pose.orientation.w = 1;
 
-        br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "base_link"));
+        br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "uav_link"));
         base_pub.publish(pose_drone);
         rate.sleep();
     }

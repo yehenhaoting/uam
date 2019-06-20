@@ -48,7 +48,7 @@ void pose_cb(const geometry_msgs::Pose& pose)
 
 void base_cb(const geometry_msgs::PoseStamped& msg)
 {
-    Base_xyz = KDL::Vector(msg.pose.position.x, msg.pose.position.y, msg.pose.position.z);
+    Base_xyz = KDL::Vector(msg.pose.position.x, -msg.pose.position.y, msg.pose.position.z);
     Base_rot = KDL::Rotation::Quaternion(msg.pose.orientation.x, msg.pose.orientation.y, msg.pose.orientation.z, msg.pose.orientation.w);
 }
 
@@ -65,7 +65,8 @@ int main(int argc, char** argv)
 
 
     //Trac_IK
-    TRAC_IK::TRAC_IK tracik_solver("base_link", "end_link", "/robot_description", 0.005, 1E-5, TRAC_IK::Distance);
+//    TRAC_IK::TRAC_IK tracik_solver("base_link", "end_link", "/robot_description", 0.005, 1E-5, TRAC_IK::Distance);
+    TRAC_IK::TRAC_IK tracik_solver("uav_link", "end_link", "/robot_description", 0.005, 1E-5, TRAC_IK::Distance);
     KDL::Chain chain;
     KDL::JntArray ll, ul; //lower joint limits, upper joint limits
     bool valid = tracik_solver.getKDLChain(chain);
@@ -111,10 +112,11 @@ int main(int argc, char** argv)
         KDL::Frame cartpos_init;
         KDL::JntArray result;
 
-
-        KDL::Frame F_world_baselink = KDL::Frame(Base_rot, Base_xyz);
-        KDL::Frame inv_F_world_baselink = F_world_baselink.Inverse();
-        KDL::Frame cartpos = inv_F_world_baselink * Frame(EE_rpy, EE_xyz);
+        KDL::Frame F_baselink__EElink = KDL::Frame(EE_rpy, EE_xyz);
+        KDL::Frame F_world_uavlink = KDL::Frame(Base_rot, Base_xyz);
+        KDL::Frame F_uavlink_baselink = KDL::Frame(KDL::Rotation::RPY(3.1416, 0, 0), KDL::Vector(0,0,0));
+        KDL::Frame cartpos = F_uavlink_baselink.Inverse() * F_world_uavlink.Inverse() * F_baselink__EElink;
+//        KDL::Frame cartpos = F_uavlink_baselink * F_baselink__EElink;
 
 
         int kinematics_status;
