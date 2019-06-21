@@ -22,6 +22,9 @@
     <!--<node pkg="uam_arm" name="ftServo" type="ftServo" output="screen"/>-->
 
     <!-- Float uav -->
+    <node pkg="uam_arm" name="uav_pose" type="uav_pose.py"/>
+
+    <!-- Float uav -->
     <node pkg="uam_arm" name="drone_tf_broadcaster" type="drone_tf_broadcaster"/>
 
 </launch>

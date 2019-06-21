@@ -84,9 +84,14 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bea0bdb6-b1d6-4801-a167-e6c3789c898f" name="Default Changelist" comment="">
+    <list default="true" id="bea0bdb6-b1d6-4801-a167-e6c3789c898f" name="Default Changelist" comment="Frame trans ok, rotation ok">
+      <change afterPath="$PROJECT_DIR$/script/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/script/uav_pose.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uam_arm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uam_arm.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TRACIKsolver.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/TRACIKsolver.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/launch/AutoTRACIK.launch" beforeDir="false" afterPath="$PROJECT_DIR$/launch/AutoTRACIK.launch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Joystick_node.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Joystick_node.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/drone_tf_broadcaster.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/drone_tf_broadcaster.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$USER_HOME$/ClionBuild/uam/" />
@@ -96,7 +101,6 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FUSProjectUsageTrigger">
     <session id="1353348151">
       <usages-collector id="statistics.lifecycle.project">
@@ -126,6 +130,7 @@
           <entry key="CMakeLists.txt" value="13" />
           <entry key="Ini" value="6" />
           <entry key="ObjectiveC" value="91" />
+          <entry key="Python" value="3" />
           <entry key="roslaunch" value="19" />
         </counts>
       </usages-collector>
@@ -141,9 +146,10 @@
         <counts>
           <entry key="CMakeLists.txt" value="185" />
           <entry key="Ini" value="181" />
-          <entry key="ObjectiveC" value="4351" />
-          <entry key="PLAIN_TEXT" value="343" />
-          <entry key="roslaunch" value="479" />
+          <entry key="ObjectiveC" value="4482" />
+          <entry key="PLAIN_TEXT" value="345" />
+          <entry key="Python" value="1011" />
+          <entry key="roslaunch" value="494" />
         </counts>
       </usages-collector>
     </session>
@@ -162,8 +168,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Joystick_node.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+            <state relative-caret-position="192">
+              <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -171,26 +177,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/launch/arm_joy.launch">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
+            <state relative-caret-position="548">
               <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/launch/AutoTRACIK.launch">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="304">
+              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TRACIKsolver.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1672">
-              <caret line="112" column="44" selection-start-line="112" selection-start-column="44" selection-end-line="112" selection-end-column="44" />
+            <state relative-caret-position="209">
+              <caret line="80" column="79" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="79" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -199,10 +205,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file:///usr/include/eigen3/Eigen/src/Core/Matrix.h">
+        <entry file="file://$PROJECT_DIR$/script/uav_pose.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8550">
-              <caret line="450" column="54" selection-start-line="450" selection-start-column="54" selection-end-line="450" selection-end-column="54" />
+            <state relative-caret-position="418">
+              <caret line="37" column="51" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
+              <folding>
+                <element signature="e#23#35#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -228,8 +237,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/drone_tf_broadcaster.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="20" column="83" selection-start-line="20" selection-start-column="83" selection-end-line="20" selection-end-column="83" />
+            <state relative-caret-position="209">
+              <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
               <folding>
                 <element signature="e#36#56#0" expanded="true" />
               </folding>
@@ -237,12 +246,29 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="513">
+              <caret line="27" column="21" lean-forward="true" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+              <folding>
+                <element signature="e#38#48#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Could not generate robot model</find>
-      <find>kdl_chain6</find>
       <find>kdl_jointpositions6</find>
       <find>joint</find>
       <find>id</find>
@@ -271,6 +297,8 @@
       <find>RPY</find>
       <find>Frame</find>
       <find>reset</find>
+      <find>robot_description</find>
+      <find>br</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -294,11 +322,13 @@
         <option value="$PROJECT_DIR$/src/KeyboardTeleopNode.cpp" />
         <option value="$PROJECT_DIR$/launch/uav.launch" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/launch/AutoTRACIK.launch" />
         <option value="$PROJECT_DIR$/launch/arm_joy.launch" />
+        <option value="$PROJECT_DIR$/src/TRACIKsolver.cpp" />
+        <option value="$PROJECT_DIR$/script/test.py" />
         <option value="$PROJECT_DIR$/src/drone_tf_broadcaster.cpp" />
         <option value="$PROJECT_DIR$/src/Joystick_node.cpp" />
-        <option value="$PROJECT_DIR$/src/TRACIKsolver.cpp" />
+        <option value="$PROJECT_DIR$/script/uav_pose.py" />
+        <option value="$PROJECT_DIR$/launch/AutoTRACIK.launch" />
       </list>
     </option>
   </component>
@@ -316,10 +346,27 @@
   </component>
   <component name="OCFindUsagesOptions" text="false" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="992" />
-    <option name="y" value="176" />
-    <option name="width" value="928" />
-    <option name="height" value="1048" />
+    <option name="x" value="65" />
+    <option name="y" value="132" />
+    <option name="width" value="1855" />
+    <option name="height" value="1084" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>Python</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>PyInterpreterInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -351,6 +398,12 @@
               <item name="uam_arm" type="b2602c69:ProjectViewProjectNode" />
               <item name="uam_arm" type="47feb1d3:ProjectViewModuleNode" />
               <item name="uam_arm" type="462c0819:PsiDirectoryNode" />
+              <item name="script" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uam_arm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uam_arm" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="uam_arm" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -363,15 +416,16 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/robot_ws/src" />
-    <property name="settings.editor.selected.configurable" value="preferences.externalDependencies" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/script" />
+      <recent name="$PROJECT_DIR$/launch" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/launch" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
@@ -768,6 +822,48 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="uam_arm" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/script" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/script/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="uav_pose" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="uam_arm" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/script" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/script/uav_pose.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.Build All" />
       <item itemvalue="Application.actionlib_generate_messages_cpp" />
@@ -844,7 +940,15 @@
       <item itemvalue="Application.dynamic_reconfigure_generate_messages_py" />
       <item itemvalue="Application.test_servo" />
       <item itemvalue="Application.uam_arm_gencfg" />
+      <item itemvalue="Python.uav_pose" />
+      <item itemvalue="Python.test" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.uav_pose" />
+        <item itemvalue="Python.test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -894,7 +998,7 @@
       <workItem from="1560924403839" duration="13477000" />
       <workItem from="1560995749852" duration="14230000" />
       <workItem from="1561031959993" duration="720000" />
-      <workItem from="1561081564846" duration="2987000" />
+      <workItem from="1561081564846" duration="16620000" />
     </task>
     <task id="LOCAL-00001" summary="change path of URDF in TRACIKsolver.cpp">
       <created>1557811616699</created>
@@ -1015,22 +1119,29 @@
       <option name="project" value="LOCAL" />
       <updated>1561032543831</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Frame trans ok, rotation ok">
+      <created>1561084589607</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1561084589607</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="138600000" />
+    <option name="totallyTimeSpent" value="152233000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="125" width="1857" height="1092" extended-state="6" />
+    <frame x="65" y="132" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49947643" visible="true" weight="0.18131565" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49947643" visible="true" weight="0.18131565" />
       <window_info id="Structure" order="1" sideWeight="0.50052357" side_tool="true" weight="0.20508568" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32984293" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32984293" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32984293" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4997236" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1040,7 +1151,7 @@
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5002764" side_tool="true" weight="0.35183245" />
       <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" weight="0.32984293" />
       <window_info anchor="bottom" id="CMake" order="11" weight="0.32879582" />
-      <window_info active="true" anchor="bottom" id="Messages" order="12" sideWeight="0.498618" visible="true" weight="0.42408377" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.498618" weight="0.42408377" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1068,7 +1179,8 @@
     <MESSAGE value="first ok, Frame still wrong" />
     <MESSAGE value="Frame trans ok, rot wrong for roll" />
     <MESSAGE value="Frame trans ok, rotation wrong" />
-    <option name="LAST_COMMIT_MESSAGE" value="Frame trans ok, rotation wrong" />
+    <MESSAGE value="Frame trans ok, rotation ok" />
+    <option name="LAST_COMMIT_MESSAGE" value="Frame trans ok, rotation ok" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///usr/include/geos_c.h">
@@ -1263,13 +1375,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/launch/arm_joy.launch">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/include/eigen3/Eigen/src/Core/Matrix.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8550">
@@ -1284,20 +1389,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/drone_tf_broadcaster.cpp">
+    <entry file="file://$PROJECT_DIR$/src/TRACIKsolver.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="83" selection-start-line="20" selection-start-column="83" selection-end-line="20" selection-end-column="83" />
+        <state relative-caret-position="209">
+          <caret line="80" column="79" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="79" />
           <folding>
-            <element signature="e#36#56#0" expanded="true" />
+            <element signature="e#0#22#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Joystick_node.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -1308,6 +1406,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/script/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="27" column="21" lean-forward="true" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+          <folding>
+            <element signature="e#38#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/drone_tf_broadcaster.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding>
+            <element signature="e#36#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Joystick_node.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/launch/arm_joy.launch">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -1315,20 +1447,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/launch/AutoTRACIK.launch">
+    <entry file="file://$PROJECT_DIR$/script/uav_pose.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="418">
+          <caret line="37" column="51" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
+          <folding>
+            <element signature="e#23#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TRACIKsolver.cpp">
+    <entry file="file://$PROJECT_DIR$/launch/AutoTRACIK.launch">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1672">
-          <caret line="112" column="44" selection-start-line="112" selection-start-column="44" selection-end-line="112" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="304">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
