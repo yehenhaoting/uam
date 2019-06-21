@@ -38,27 +38,29 @@ Rotation EE_rpy = Rotation::RPY(0.0, 1.5708, 0.0);
 KDL::Vector UAV_xyz = KDL::Vector(0, 0, 0);
 KDL::Rotation UAV_rot = KDL::Rotation::Quaternion(0, 0, 0, 1);
 
+geometry_msgs::Pose last_pose;
+
 bool joint_pub_flag = true;
 bool reset_flag = false;
-
-geometry_msgs::Quaternion euler2quaternion(float roll, float pitch, float yaw);
+bool pose_Init = true;
 
 void EE_pose_cb(const geometry_msgs::Pose &pose)
 {
+    KDL::Rotation Temp_rpy = Rotation::RPY(0.0, 0.0, 0.0);
+
     EE_xyz = KDL::Vector(pose.position.x, pose.position.y, pose.position.z);
-    EE_rpy = KDL::Rotation::RPY(pose.orientation.x, pose.orientation.y, pose.orientation.z);
-////    EE_rpy = KDL::Rotation::EulerZYX(pose.orientation.x, pose.orientation.y, pose.orientation.z);
-////    geometry_msgs::Quaternion temp_quat = euler2quaternion(pose.orientation.x, pose.orientation.y, pose.orientation.z);
-////    EE_rpy = KDL::Rotation::Quaternion(temp_quat.x, temp_quat.y, temp_quat.z, temp_quat.w);
-//
-//    Eigen::Matrix3d rot_matrix;
-//    rot_matrix = Eigen::AngleAxisd(pose.orientation.x, Eigen::Vector3d::UnitZ()) *
-//                       Eigen::AngleAxisd(pose.orientation.y, Eigen::Vector3d::UnitY()) *
-//                       Eigen::AngleAxisd(pose.orientation.z, Eigen::Vector3d::UnitX());
-//    EE_rpy = KDL::Rotation(rot_matrix(0,0), rot_matrix(0,1), rot_matrix(0,2), rot_matrix(1,0), rot_matrix(1,1), rot_matrix(1,2), rot_matrix(2,0), rot_matrix(2,1), rot_matrix(2,2));
-//
-//    std::cout << rot_matrix <<std::endl;
-//    std::cout << pose.orientation.x <<"\t"<<pose.orientation.y<<"\t"<<pose.orientation.z<<std::endl<<std::endl;
+
+    if(pose_Init || reset_flag){
+        EE_rpy = KDL::Rotation::RPY(pose.orientation.x, pose.orientation.y, pose.orientation.z);
+        last_pose = pose;
+        pose_Init = false;
+    } else{
+        Temp_rpy = KDL::Rotation::RPY(pose.orientation.x - last_pose.orientation.x, pose.orientation.y - last_pose.orientation.y, pose.orientation.z - last_pose.orientation.z);
+//        EE_rpy = EE_rpy * Temp_rpy; //相对末端坐标系旋转
+        EE_rpy = Temp_rpy * EE_rpy; //相对世界坐标系旋转
+    }
+
+    last_pose = pose;
     reset_flag = bool(pose.orientation.w);
 
 }
@@ -67,16 +69,6 @@ void uav_pose_cb(const geometry_msgs::PoseStamped &msg)
 {
     UAV_xyz = KDL::Vector(msg.pose.position.x, msg.pose.position.y, msg.pose.position.z);
     UAV_rot = KDL::Rotation::Quaternion(msg.pose.orientation.x, msg.pose.orientation.y, msg.pose.orientation.z, msg.pose.orientation.w);
-}
-
-geometry_msgs::Quaternion euler2quaternion(float roll, float pitch, float yaw)
-{
-    geometry_msgs::Quaternion temp;
-    temp.w = cos(roll/2)*cos(pitch/2)*cos(yaw/2) + sin(roll/2)*sin(pitch/2)*sin(yaw/2);
-    temp.x = sin(roll/2)*cos(pitch/2)*cos(yaw/2) - cos(roll/2)*sin(pitch/2)*sin(yaw/2);
-    temp.y = cos(roll/2)*sin(pitch/2)*cos(yaw/2) + sin(roll/2)*cos(pitch/2)*sin(yaw/2);
-    temp.z = cos(roll/2)*cos(pitch/2)*sin(yaw/2) - sin(roll/2)*sin(pitch/2)*cos(yaw/2);
-    return temp;
 }
 
 
@@ -119,17 +111,6 @@ int main(int argc, char** argv)
     ROS_INFO("Using %d joints", chain.getNrOfJoints());
 
     unsigned int nj = chain.getNrOfJoints();
-
-
-    //KDL
-    Tree my_tree;
-    kdl_parser::treeFromParam("/robot_description",my_tree);
-
-    double eps=1E-3;
-    int maxiter=1000;
-    double eps_joints=1E-15;
-
-
     sensor_msgs::JointState joint_state;
     unsigned int count = 0;
 

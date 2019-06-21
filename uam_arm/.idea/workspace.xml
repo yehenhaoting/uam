@@ -45,6 +45,7 @@
       <config projectName="uam_arm" targetName="actionlib_msgs_generate_messages_py" />
       <config projectName="uam_arm" targetName="gtest" />
       <config projectName="uam_arm" targetName="gmock_main" />
+      <config projectName="uam_arm" targetName="geometry_msgs_generate_messages_lisp" />
       <config projectName="uam_arm" targetName="rosgraph_msgs_generate_messages_nodejs" />
       <config projectName="uam_arm" targetName="roscpp_generate_messages_nodejs" />
       <config projectName="uam_arm" targetName="dynamic_reconfigure_generate_messages_eus" />
@@ -54,16 +55,15 @@
       <config projectName="uam_arm" targetName="tf_generate_messages_nodejs" />
       <config projectName="uam_arm" targetName="rosgraph_msgs_generate_messages_py" />
       <config projectName="uam_arm" targetName="dynamic_reconfigure_gencfg" />
-      <config projectName="uam_arm" targetName="actionlib_generate_messages_nodejs" />
-      <config projectName="uam_arm" targetName="rosgraph_msgs_generate_messages_cpp" />
+      <config projectName="uam_arm" targetName="drone_tf_broadcaster" />
       <config projectName="uam_arm" targetName="std_msgs_generate_messages_nodejs" />
       <config projectName="uam_arm" targetName="std_msgs_generate_messages_cpp" />
+      <config projectName="uam_arm" targetName="actionlib_generate_messages_nodejs" />
       <config projectName="uam_arm" targetName="roscpp_generate_messages_eus" />
       <config projectName="uam_arm" targetName="Joystick_node" />
       <config projectName="uam_arm" targetName="dynamic_reconfigure_generate_messages_py" />
       <config projectName="uam_arm" targetName="geometry_msgs_generate_messages_eus" />
       <config projectName="uam_arm" targetName="tf2_msgs_generate_messages_eus" />
-      <config projectName="uam_arm" targetName="drone_tf_broadcaster" />
       <config projectName="uam_arm" targetName="diagnostic_msgs_generate_messages_lisp" />
       <config projectName="uam_arm" targetName="KeyboardTeleopNode" />
       <config projectName="uam_arm" targetName="sensor_msgs_generate_messages_cpp" />
@@ -73,7 +73,7 @@
       <config projectName="uam_arm" targetName="diagnostic_msgs_generate_messages_nodejs" />
       <config projectName="uam_arm" targetName="dynamic_reconfigure_generate_messages_nodejs" />
       <config projectName="uam_arm" targetName="geometry_msgs_generate_messages_nodejs" />
-      <config projectName="uam_arm" targetName="geometry_msgs_generate_messages_lisp" />
+      <config projectName="uam_arm" targetName="rosgraph_msgs_generate_messages_cpp" />
       <config projectName="uam_arm" targetName="std_msgs_generate_messages_eus" />
       <config projectName="uam_arm" targetName="ftServo" />
     </generated>
@@ -84,10 +84,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bea0bdb6-b1d6-4801-a167-e6c3789c898f" name="Default Changelist" comment="Frame trans ok, rot wrong for roll">
-      <change beforePath="$PROJECT_DIR$/../robot_urdf/urdf/uam_urdf.urdf" beforeDir="false" afterPath="$PROJECT_DIR$/../robot_urdf/urdf/uam_urdf.urdf" afterDir="false" />
+    <list default="true" id="bea0bdb6-b1d6-4801-a167-e6c3789c898f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Joystick_node.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Joystick_node.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TRACIKsolver.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/TRACIKsolver.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$USER_HOME$/ClionBuild/uam/" />
@@ -102,7 +101,7 @@
     <session id="1353348151">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="25" />
+          <entry key="project.closed" value="26" />
           <entry key="project.open.time.0" value="7" />
           <entry key="project.open.time.1" value="7" />
           <entry key="project.open.time.10" value="1" />
@@ -116,10 +115,10 @@
           <entry key="project.open.time.27" value="1" />
           <entry key="project.open.time.4" value="2" />
           <entry key="project.open.time.5" value="7" />
-          <entry key="project.open.time.6" value="3" />
+          <entry key="project.open.time.6" value="4" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="38" />
+          <entry key="project.opened" value="39" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -142,8 +141,8 @@
         <counts>
           <entry key="CMakeLists.txt" value="185" />
           <entry key="Ini" value="181" />
-          <entry key="ObjectiveC" value="4057" />
-          <entry key="PLAIN_TEXT" value="325" />
+          <entry key="ObjectiveC" value="4351" />
+          <entry key="PLAIN_TEXT" value="343" />
           <entry key="roslaunch" value="479" />
         </counts>
       </usages-collector>
@@ -164,7 +163,7 @@
         <entry file="file://$PROJECT_DIR$/src/Joystick_node.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="648">
-              <caret line="42" column="34" lean-forward="true" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+              <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -190,8 +189,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TRACIKsolver.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="48" column="90" lean-forward="true" selection-start-line="48" selection-start-column="72" selection-end-line="48" selection-end-column="90" />
+            <state relative-caret-position="1672">
+              <caret line="112" column="44" selection-start-line="112" selection-start-column="44" selection-end-line="112" selection-end-column="44" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -211,8 +210,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file:///opt/ros/kinetic/include/kdl/frames.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5852">
-              <caret line="308" column="18" selection-start-line="308" selection-start-column="18" selection-end-line="308" selection-end-column="18" />
+            <state relative-caret-position="518">
+              <caret line="327" column="32" selection-start-line="327" selection-start-column="31" selection-end-line="327" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -242,7 +241,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ul</find>
       <find>Could not generate robot model</find>
       <find>kdl_chain6</find>
       <find>kdl_jointpositions6</find>
@@ -272,6 +270,7 @@
       <find>UAV_xyz</find>
       <find>RPY</find>
       <find>Frame</find>
+      <find>reset</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -298,8 +297,8 @@
         <option value="$PROJECT_DIR$/launch/AutoTRACIK.launch" />
         <option value="$PROJECT_DIR$/launch/arm_joy.launch" />
         <option value="$PROJECT_DIR$/src/drone_tf_broadcaster.cpp" />
-        <option value="$PROJECT_DIR$/src/TRACIKsolver.cpp" />
         <option value="$PROJECT_DIR$/src/Joystick_node.cpp" />
+        <option value="$PROJECT_DIR$/src/TRACIKsolver.cpp" />
       </list>
     </option>
   </component>
@@ -330,7 +329,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -359,6 +357,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -894,7 +893,8 @@
       <workItem from="1560565109523" duration="15000" />
       <workItem from="1560924403839" duration="13477000" />
       <workItem from="1560995749852" duration="14230000" />
-      <workItem from="1561031959993" duration="547000" />
+      <workItem from="1561031959993" duration="720000" />
+      <workItem from="1561081564846" duration="2987000" />
     </task>
     <task id="LOCAL-00001" summary="change path of URDF in TRACIKsolver.cpp">
       <created>1557811616699</created>
@@ -1008,17 +1008,24 @@
       <option name="project" value="LOCAL" />
       <updated>1561013805758</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Frame trans ok, rotation wrong">
+      <created>1561032543831</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1561032543831</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135440000" />
+    <option name="totallyTimeSpent" value="138600000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="125" width="1857" height="1092" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49947643" visible="true" weight="0.17910448" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49947643" visible="true" weight="0.18131565" />
       <window_info id="Structure" order="1" sideWeight="0.50052357" side_tool="true" weight="0.20508568" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1060,7 +1067,8 @@
     <MESSAGE value="add urdf of uav" />
     <MESSAGE value="first ok, Frame still wrong" />
     <MESSAGE value="Frame trans ok, rot wrong for roll" />
-    <option name="LAST_COMMIT_MESSAGE" value="Frame trans ok, rot wrong for roll" />
+    <MESSAGE value="Frame trans ok, rotation wrong" />
+    <option name="LAST_COMMIT_MESSAGE" value="Frame trans ok, rotation wrong" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///usr/include/geos_c.h">
@@ -1255,17 +1263,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+    <entry file="file://$PROJECT_DIR$/launch/arm_joy.launch">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="49" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/launch/AutoTRACIK.launch">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="570">
+          <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -1273,13 +1274,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8550">
           <caret line="450" column="54" selection-start-line="450" selection-start-column="54" selection-end-line="450" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///opt/ros/kinetic/include/kdl/frames.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5852">
-          <caret line="308" column="18" selection-start-line="308" selection-start-column="18" selection-end-line="308" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -1300,24 +1294,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/launch/arm_joy.launch">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Joystick_node.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="648">
-          <caret line="42" column="34" lean-forward="true" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+          <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///opt/ros/kinetic/include/kdl/frames.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="327" column="32" selection-start-line="327" selection-start-column="31" selection-end-line="327" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="49" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/launch/AutoTRACIK.launch">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TRACIKsolver.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="48" column="90" lean-forward="true" selection-start-line="48" selection-start-column="72" selection-end-line="48" selection-end-column="90" />
+        <state relative-caret-position="1672">
+          <caret line="112" column="44" selection-start-line="112" selection-start-column="44" selection-end-line="112" selection-end-column="44" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>
