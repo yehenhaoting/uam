@@ -29,11 +29,11 @@
 
 #define PI (3.1415926535897932346f)
 
-using namespace KDL;
+//using namespace KDL;
 using namespace std;
 
-Vector EE_xyz = Vector(0.18, 0.0, 0.28);
-Rotation EE_rpy = Rotation::RPY(0.0, 1.5708, 0.0);
+KDL::Vector EE_xyz = KDL::Vector(0.18, 0.0, 0.28);
+KDL::Rotation EE_rpy = KDL::Rotation::RPY(0.0, 1.5708, 0.0);
 
 KDL::Vector UAV_xyz = KDL::Vector(0, 0, 0);
 KDL::Rotation UAV_rot = KDL::Rotation::Quaternion(0, 0, 0, 1);
@@ -46,7 +46,7 @@ bool pose_Init = true;
 
 void EE_pose_cb(const geometry_msgs::Pose &pose)
 {
-    KDL::Rotation Temp_rpy = Rotation::RPY(0.0, 0.0, 0.0);
+    KDL::Rotation Temp_rpy = KDL::Rotation::RPY(0.0, 0.0, 0.0);
 
     EE_xyz = KDL::Vector(pose.position.x, pose.position.y, pose.position.z);
 
