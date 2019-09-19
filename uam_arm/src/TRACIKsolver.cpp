@@ -115,7 +115,6 @@ int main(int argc, char** argv)
     unsigned int count = 0;
 
     while(ros::ok()){
-//        KDL::Frame cartpos = Frame(EE_rpy, EE_xyz);
         KDL::Frame cartpos_init;
         KDL::JntArray result;
 

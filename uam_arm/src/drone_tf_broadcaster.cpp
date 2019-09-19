@@ -55,7 +55,7 @@ int main(int argc, char** argv){
 //        pose_drone.pose.orientation.z = 0;
 //        pose_drone.pose.orientation.w = 1;
 
-        br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "uav_link"));
+        br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "uav_link")); //transform是坐标变换关系，“world”是父Frame，“uav_Link“是子frame
         base_pub.publish(pose_drone);
         rate.sleep();
     }
