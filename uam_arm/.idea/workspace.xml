@@ -2,42 +2,42 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
-      <config projectName="uam_arm" targetName="std_msgs_generate_messages_py" />
-      <config projectName="uam_arm" targetName="gtest" />
-      <config projectName="uam_arm" targetName="gtest_main" />
-      <config projectName="uam_arm" targetName="tests" />
-      <config projectName="uam_arm" targetName="HololensServer" />
-      <config projectName="uam_arm" targetName="rosgraph_msgs_generate_messages_eus" />
-      <config projectName="uam_arm" targetName="rosgraph_msgs_generate_messages_lisp" />
-      <config projectName="uam_arm" targetName="TRACIKsolver" />
-      <config projectName="uam_arm" targetName="download_extra_data" />
-      <config projectName="uam_arm" targetName="dynamic_reconfigure_generate_messages_py" />
-      <config projectName="uam_arm" targetName="dynamic_reconfigure_generate_messages_eus" />
-      <config projectName="uam_arm" targetName="roscpp_generate_messages_lisp" />
-      <config projectName="uam_arm" targetName="std_msgs_generate_messages_eus" />
-      <config projectName="uam_arm" targetName="KeyboardTeleopNode" />
-      <config projectName="uam_arm" targetName="dynamic_reconfigure_generate_messages_lisp" />
-      <config projectName="uam_arm" targetName="std_msgs_generate_messages_nodejs" />
-      <config projectName="uam_arm" targetName="dynamic_reconfigure_gencfg" />
-      <config projectName="uam_arm" targetName="rosgraph_msgs_generate_messages_nodejs" />
-      <config projectName="uam_arm" targetName="rosgraph_msgs_generate_messages_cpp" />
-      <config projectName="uam_arm" targetName="roscpp_generate_messages_nodejs" />
-      <config projectName="uam_arm" targetName="gmock" />
-      <config projectName="uam_arm" targetName="dynamic_reconfigure_generate_messages_cpp" />
-      <config projectName="uam_arm" targetName="std_msgs_generate_messages_cpp" />
-      <config projectName="uam_arm" targetName="roscpp_generate_messages_eus" />
-      <config projectName="uam_arm" targetName="ftServo" />
-      <config projectName="uam_arm" targetName="std_msgs_generate_messages_lisp" />
-      <config projectName="uam_arm" targetName="uam_arm_gencfg" />
-      <config projectName="uam_arm" targetName="dynamic_reconfigure_generate_messages_nodejs" />
-      <config projectName="uam_arm" targetName="clean_test_results" />
-      <config projectName="uam_arm" targetName="roscpp_generate_messages_py" />
-      <config projectName="uam_arm" targetName="run_tests" />
-      <config projectName="uam_arm" targetName="doxygen" />
-      <config projectName="uam_arm" targetName="rosgraph_msgs_generate_messages_py" />
-      <config projectName="uam_arm" targetName="test_servo" />
-      <config projectName="uam_arm" targetName="roscpp_generate_messages_cpp" />
-      <config projectName="uam_arm" targetName="gmock_main" />
+      <config projectName="Project" targetName="download_extra_data" />
+      <config projectName="Project" targetName="dynamic_reconfigure_generate_messages_nodejs" />
+      <config projectName="Project" targetName="roscpp_generate_messages_py" />
+      <config projectName="Project" targetName="run_tests" />
+      <config projectName="Project" targetName="roscpp_generate_messages_cpp" />
+      <config projectName="Project" targetName="std_msgs_generate_messages_cpp" />
+      <config projectName="Project" targetName="ftServo" />
+      <config projectName="Project" targetName="clean_test_results" />
+      <config projectName="Project" targetName="gtest" />
+      <config projectName="Project" targetName="std_msgs_generate_messages_lisp" />
+      <config projectName="Project" targetName="KeyboardTeleopNode" />
+      <config projectName="Project" targetName="std_msgs_generate_messages_nodejs" />
+      <config projectName="Project" targetName="dynamic_reconfigure_generate_messages_py" />
+      <config projectName="Project" targetName="gmock_main" />
+      <config projectName="Project" targetName="rosgraph_msgs_generate_messages_cpp" />
+      <config projectName="Project" targetName="HololensServer" />
+      <config projectName="Project" targetName="rosgraph_msgs_generate_messages_lisp" />
+      <config projectName="Project" targetName="dynamic_reconfigure_generate_messages_eus" />
+      <config projectName="Project" targetName="TRACIKsolver" />
+      <config projectName="Project" targetName="gtest_main" />
+      <config projectName="Project" targetName="rosgraph_msgs_generate_messages_py" />
+      <config projectName="Project" targetName="std_msgs_generate_messages_py" />
+      <config projectName="Project" targetName="test_servo" />
+      <config projectName="Project" targetName="dynamic_reconfigure_gencfg" />
+      <config projectName="Project" targetName="uam_arm_gencfg" />
+      <config projectName="Project" targetName="gmock" />
+      <config projectName="Project" targetName="roscpp_generate_messages_eus" />
+      <config projectName="Project" targetName="doxygen" />
+      <config projectName="Project" targetName="tests" />
+      <config projectName="Project" targetName="dynamic_reconfigure_generate_messages_lisp" />
+      <config projectName="Project" targetName="std_msgs_generate_messages_eus" />
+      <config projectName="Project" targetName="roscpp_generate_messages_lisp" />
+      <config projectName="Project" targetName="rosgraph_msgs_generate_messages_nodejs" />
+      <config projectName="Project" targetName="roscpp_generate_messages_nodejs" />
+      <config projectName="Project" targetName="rosgraph_msgs_generate_messages_eus" />
+      <config projectName="Project" targetName="dynamic_reconfigure_generate_messages_cpp" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -47,6 +47,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bea0bdb6-b1d6-4801-a167-e6c3789c898f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -57,7 +59,6 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FUSProjectUsageTrigger">
     <session id="1353348151">
       <usages-collector id="statistics.lifecycle.project">
@@ -81,10 +82,11 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CMakeLists.txt" value="6" />
-          <entry key="Ini" value="4" />
-          <entry key="ObjectiveC" value="31" />
-          <entry key="roslaunch" value="8" />
+          <entry key="CMakeLists.txt" value="7" />
+          <entry key="Ini" value="5" />
+          <entry key="Markdown" value="1" />
+          <entry key="ObjectiveC" value="36" />
+          <entry key="roslaunch" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -99,6 +101,7 @@
         <counts>
           <entry key="CMakeLists.txt" value="80" />
           <entry key="Ini" value="181" />
+          <entry key="Markdown" value="395" />
           <entry key="ObjectiveC" value="363" />
           <entry key="PLAIN_TEXT" value="75" />
           <entry key="roslaunch" value="26" />
@@ -111,17 +114,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="893">
-              <caret line="47" selection-start-line="47" selection-end-line="54" selection-end-column="55" />
+            <state relative-caret-position="858">
+              <caret line="46" selection-start-line="46" selection-end-line="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/launch/AutoTRACIK.launch">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/launch/AutoTRACIK.launch">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
+        <entry file="file://$PROJECT_DIR$/../README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="551">
+                <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -138,7 +153,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test_servo.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
+            <state relative-caret-position="969">
               <caret line="51" column="60" selection-start-line="51" selection-start-column="60" selection-end-line="51" selection-end-column="60" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -150,8 +165,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cfg/uam_cfg.cfg">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="456">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
         </entry>
@@ -159,11 +174,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TRACIKsolver.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="47" column="16" lean-forward="true" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
-              <folding>
-                <element signature="e#0#22#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="471">
+              <caret line="99" column="44" lean-forward="true" selection-start-line="99" selection-start-column="44" selection-end-line="99" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -171,7 +183,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file:///opt/ros/kinetic/include/trac_ik/trac_ik.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
+            <state relative-caret-position="950">
               <caret line="50" column="162" selection-start-line="50" selection-start-column="161" selection-end-line="50" selection-end-column="162" />
             </state>
           </provider>
@@ -180,7 +192,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file:///opt/ros/kinetic/include/kdl_parser/kdl_parser.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
+            <state relative-caret-position="1653">
               <caret line="87" column="22" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="22" />
               <folding>
                 <element signature="e#1872#1895#0" expanded="true" />
@@ -192,8 +204,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ftServo.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
+            <state relative-caret-position="836">
+              <caret line="44" column="34" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
               <folding>
                 <element signature="e#1#21#0" expanded="true" />
               </folding>
@@ -226,7 +238,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="dev" />
+        <entry key="$PROJECT_DIR$/.." value="dev_uam" />
       </map>
     </option>
   </component>
@@ -242,6 +254,7 @@
         <option value="$PROJECT_DIR$/src/test_servo.cpp" />
         <option value="$PROJECT_DIR$/src/TRACIKsolver.cpp" />
         <option value="$PROJECT_DIR$/launch/AutoTRACIK.launch" />
+        <option value="$PROJECT_DIR$/../README.md" />
       </list>
     </option>
   </component>
@@ -272,39 +285,31 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="uam_arm" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="uam_arm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uam_arm" type="47feb1d3:ProjectViewModuleNode" />
-            </path>
-            <path>
-              <item name="uam_arm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uam_arm" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="gmock" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uam_arm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uam_arm" type="47feb1d3:ProjectViewModuleNode" />
               <item name="uam_arm" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="uam_arm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uam_arm" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="uam_arm" type="462c0819:PsiDirectoryNode" />
-              <item name="cfg" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="uam_arm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uam_arm" type="47feb1d3:ProjectViewModuleNode" />
               <item name="uam_arm" type="462c0819:PsiDirectoryNode" />
               <item name="launch" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="uam_arm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="uam_arm" type="47feb1d3:ProjectViewModuleNode" />
               <item name="uam_arm" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -347,17 +352,17 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HololensServer" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="uam_arm" RUN_TARGET_NAME="HololensServer" EXPLICIT_BUILD_TARGET_NAME="all">
+    <configuration name="HololensServer" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="HololensServer" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="KeyboardTeleopNode" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="uam_arm" RUN_TARGET_NAME="KeyboardTeleopNode" EXPLICIT_BUILD_TARGET_NAME="all">
+    <configuration name="KeyboardTeleopNode" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="KeyboardTeleopNode" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TRACIKsolver" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="uam_arm" RUN_TARGET_NAME="TRACIKsolver" EXPLICIT_BUILD_TARGET_NAME="all">
+    <configuration name="TRACIKsolver" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="TRACIKsolver" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -412,7 +417,7 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ftServo" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="uam_arm" RUN_TARGET_NAME="ftServo" EXPLICIT_BUILD_TARGET_NAME="all">
+    <configuration name="ftServo" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="ftServo" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -517,7 +522,7 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test_servo" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="uam_arm" RUN_TARGET_NAME="test_servo" EXPLICIT_BUILD_TARGET_NAME="all">
+    <configuration name="test_servo" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="test_servo" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -629,13 +634,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39456000" />
+    <option name="totallyTimeSpent" value="40803000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="132" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20066334" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20287451" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -648,7 +653,7 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.35183245" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32984293" />
+      <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" weight="0.32984293" />
       <window_info anchor="bottom" id="CMake" order="11" weight="0.32879582" />
       <window_info anchor="bottom" id="Messages" order="12" visible="true" weight="0.32984293" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -751,40 +756,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/KeyboardTeleopNode.cpp">
+    <entry file="file://$PROJECT_DIR$/src/KeyboardTeleopNode.cpp" />
+    <entry file="file:///opt/ros/kinetic/include/tf/transform_broadcaster.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+        <state relative-caret-position="1064">
+          <caret line="56" column="52" selection-start-line="56" selection-start-column="52" selection-end-line="56" selection-end-column="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+    <entry file="file:///opt/ros/kinetic/include/tf/transform_datatypes.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="893">
-          <caret line="47" selection-start-line="47" selection-end-line="54" selection-end-column="55" />
+        <state relative-caret-position="1710">
+          <caret line="90" column="2" selection-start-line="90" selection-start-column="2" selection-end-line="90" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cfg/uam_cfg.cfg">
+    <entry file="file:///opt/ros/kinetic/include/kdl/frames.inl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="7581">
+          <caret line="399" column="10" selection-start-line="399" selection-start-column="10" selection-end-line="399" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ftServo.cpp">
+    <entry file="file:///opt/ros/kinetic/include/kdl/frames.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
-          <folding>
-            <element signature="e#1#21#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1178">
+          <caret line="62" column="18" selection-start-line="62" selection-start-column="18" selection-end-line="62" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///opt/ros/kinetic/include/tf/LinearMath/Transform.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="28" column="75" selection-start-line="28" selection-start-column="75" selection-end-line="28" selection-end-column="75" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test_servo.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
+        <state relative-caret-position="969">
           <caret line="51" column="60" selection-start-line="51" selection-start-column="60" selection-end-line="51" selection-end-column="60" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -792,13 +802,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cfg/uam_cfg.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///opt/ros/kinetic/include/trac_ik/trac_ik.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="950">
+          <caret line="50" column="162" selection-start-line="50" selection-start-column="161" selection-end-line="50" selection-end-column="162" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file:///opt/ros/kinetic/include/kdl_parser/kdl_parser.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
+        <state relative-caret-position="1653">
           <caret line="87" column="22" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="22" />
           <folding>
             <element signature="e#1872#1895#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ftServo.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="836">
+          <caret line="44" column="34" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
+          <folding>
+            <element signature="e#1#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="858">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
         </state>
       </provider>
     </entry>
@@ -809,27 +850,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TRACIKsolver.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="47" column="16" lean-forward="true" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///opt/ros/kinetic/include/trac_ik/trac_ik.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="50" column="162" selection-start-line="50" selection-start-column="161" selection-end-line="50" selection-end-column="162" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/launch/AutoTRACIK.launch">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
+        <state relative-caret-position="304">
+          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TRACIKsolver.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="99" column="44" lean-forward="true" selection-start-line="99" selection-start-column="44" selection-end-line="99" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="551">
+            <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
