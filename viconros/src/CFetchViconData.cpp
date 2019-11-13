@@ -150,7 +150,7 @@ void CFetchViconData::GetStatus(ObjStatus &s, const char * model, const char * s
     for(int i=0;i<4;i++)
     {
         s.ort[i]=Output_quat.Rotation[i];
-        // std::cout << "quat" << i << "=" <<s.ort[i] << std::endl;
+//         std::cout << "quat" << i << "=" <<s.ort[i] << std::endl;
     }
 
     Output_GetSegmentGlobalRotationEulerXYZ Output_euler = client.GetSegmentGlobalRotationEulerXYZ(model, segment);
@@ -164,7 +164,7 @@ void CFetchViconData::GetStatus(ObjStatus &s, const char * model, const char * s
     for(int i=0;i<3;i++)
     {
         s.euler[i]=Output_euler.Rotation[i];
-        std::cout << "euler" << i << "=" <<s.euler[i] *60 << std::endl;
+//        std::cout << "euler" << i << "=" <<s.euler[i] *60 << std::endl;
     }
 
 
