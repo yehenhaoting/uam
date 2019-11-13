@@ -7,8 +7,10 @@
 #include <geometry_msgs/Pose.h>
 #include <sensor_msgs/Joy.h>
 
-int linear_X, linear_Y, linear_Z, angular_R, angular_P, angular_Y, mode_XYZ, mode_RPY, mode_reset;
+int linear_X, linear_Y, linear_Z, angular_R, angular_P, angular_Y, mode_XYZ, mode_RPY, mode_reset, mode_start, mode_absolute;
 double l_scale_X, l_scale_Y, l_scale_Z, a_scale_R, a_scale_P, a_scale_Y;
+unsigned int modeFlags;
+
 
 geometry_msgs::Twist vel_pub;
 geometry_msgs::Pose pose_pub, pose_zero;
@@ -24,6 +26,8 @@ void joy_init(ros::NodeHandle & nh_)
     nh_.param("buttons_mode_XYZ", mode_XYZ, 4);
     nh_.param("buttons_mode_RPY", mode_RPY, 5);
     nh_.param("buttons_reset", mode_reset, 0);
+    nh_.param("buttons_start", mode_start, 1);
+    nh_.param("buttons_absolute", mode_absolute, 2);
 
     nh_.param("scale_linear_X", l_scale_X, 1.0);
     nh_.param("scale_linear_Y", l_scale_Y, 1.0);
@@ -33,11 +37,14 @@ void joy_init(ros::NodeHandle & nh_)
     nh_.param("scale_angular_Y", a_scale_Y, 1.0);
 }
 
+/**
+ * 设定初始位置，用于机械臂无法求解时的reset位姿
+ */
 void pose_init(ros::NodeHandle & nh_)
 {
     pose_zero.position.x = 0.18;
     pose_zero.position.y = 0.00;
-    pose_zero.position.z = -0.25;
+    pose_zero.position.z = -0.30;
     pose_zero.orientation.x = 0.0;
     pose_zero.orientation.y = 0.0;
     pose_zero.orientation.z = 0.0;
@@ -53,6 +60,25 @@ void pose_Integral()
     pose_pub.orientation.x += vel_pub.angular.x/1000;
     pose_pub.orientation.y += vel_pub.angular.y/1000;
     pose_pub.orientation.z += vel_pub.angular.z/1000;
+}
+
+/**
+ * 通过一个8位的数，传递控制机械臂的模式信息
+ * @param index
+ * @param set
+ */
+void mode_encoder(uint8_t index, bool set = true)
+{
+    if (index > 32) return;
+    if (set) {
+        modeFlags |= 1u << index;
+    } else {
+        modeFlags &= ~(1u << index);
+    }
+}
+
+void mode_Clean(){
+    modeFlags = 0;
 }
 
 void joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
@@ -81,9 +107,13 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
     }
     if(joy->buttons[mode_reset])
     {
+        mode_encoder(0, true);
         pose_pub = pose_zero;
     }
-    pose_pub.orientation.w = joy->buttons[mode_reset];
+    if(joy->buttons[mode_start]) mode_encoder(1, true);
+    if(joy->buttons[mode_absolute]) mode_encoder(2, true);
+    pose_pub.orientation.w = modeFlags;
+//    pose_pub.orientation.w = joy->buttons[mode_reset];
 
 }
 
@@ -92,14 +122,14 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
 int main(int argc, char** argv)
 {
 
-    ros::init(argc, argv, "teleop_arm");
+    ros::init(argc, argv, "uam_joystick");
     ros::NodeHandle nh;
     joy_init(nh);
     pose_init(nh);
 
     ros::Subscriber joy_sub_ = nh.subscribe<sensor_msgs::Joy>("joy", 10, &joyCallback);
-    ros::Publisher vel_pub_  = nh.advertise<geometry_msgs::Twist>("arm/cmd_vel", 1000);
-    ros::Publisher pose_pub_ = nh.advertise<geometry_msgs::Pose>("arm/cmd_pose", 1);
+    ros::Publisher vel_pub_  = nh.advertise<geometry_msgs::Twist>("arm/cmd_vel", 10);
+    ros::Publisher pose_pub_ = nh.advertise<geometry_msgs::Pose>("arm/cmd_pose", 10);
 
     ros::Rate loop_rate(100);
 
@@ -111,8 +141,11 @@ int main(int argc, char** argv)
 
         pose_Integral();
         pose_pub_.publish(pose_pub);
+        mode_Clean();
 
         loop_rate.sleep();
+//        std::cout<<"modeFlags:"<<modeFlags<<std::endl;
+
     }
     return 0;
 }

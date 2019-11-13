@@ -18,6 +18,7 @@
   <param name="buttons_mode_XYZ" value="4" type="int"/>
   <param name="buttons_mode_RPY" value="5" type="int"/>
   <param name="buttons_reset" value="0" type="int"/>
+  <param name="buttons_start" value="1" type="int"/>
 
   <param name="scale_linear_X" value="1.0" type="double"/>
   <param name="scale_linear_Y" value="1.0" type="double"/>
@@ -28,7 +29,7 @@
 
   <param name="EEpose_X" value="0.18" type="double"/>
   <param name="EEpose_Y" value="0.00" type="double"/>
-  <param name="EEpose_Z" value="-0.20" type="double"/>
+  <param name="EEpose_Z" value="-0.25" type="double"/>
   <param name="EEorientation_R" value="0" type="double"/>
   <param name="EEorientation_P" value="-1.5708" type="double"/>
   <param name="EEorientation_Y" value="3.1416" type="double"/>

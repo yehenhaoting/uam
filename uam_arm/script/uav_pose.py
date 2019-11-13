@@ -11,7 +11,7 @@ UAV_POS = PoseStamped()
 
 def pos_talker():
 
-    file_pose = '/home/zm/uam_ws/src/uam_arm/script/vehicle_local_position.csv'
+    file_pose = '/home/uav/uam_ws/src/uam_arm/script/vehicle_local_position.csv'
     with open(file_pose) as f_pose:
         reader = csv.reader(f_pose)
         header_row = next(reader)
@@ -35,7 +35,7 @@ def pos_talker():
 
     nn=1
     mm=1
-    file_rot = '/home/zm/uam_ws/src/uam_arm/script/vehicle_attitude.csv'
+    file_rot = '/home/uav/uam_ws/src/uam_arm/script/vehicle_attitude.csv'
     with open(file_rot) as f_rot:
         reader2 = csv.reader(f_rot)
         header2_row = next(reader2)

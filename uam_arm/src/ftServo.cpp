@@ -14,10 +14,10 @@ double x=0.12,y=0,z=-0.2;
 void chatterCallback(const sensor_msgs::JointState& msg)
 {
     servo_position1=(msg.position[0]+1.5707963)/3.1415926*2047+2047;
-    servo_position2=(msg.position[1]-0.32)/3.1415926*2047+2047;
+    servo_position2=(-msg.position[1]-0.32)/3.1415926*2047+2047;
     servo_position3=(msg.position[2]+0.4707963)/2.618*511+511;
     servo_position4=(-msg.position[3]+0.02)/2.618*511+511;
-    servo_position5=(-msg.position[4]-0.45)/2.618*511+511;
+    servo_position5=(msg.position[4]-0.45)/2.618*511+511;
     servo_position6=(-msg.position[5]-0.12)/2.618*511+511;
     cout<<servo_position1<<"-"<<servo_position2<<"-"<<servo_position3<<"-"<<servo_position4<<"-"<<servo_position5<<"-"<<servo_position6<<"-"<<servo_position7<<endl;
 }

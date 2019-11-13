@@ -1,0 +1,26 @@
+<launch>
+
+    <!-- URDF -->
+    <arg name="model" />
+    <arg name="gui" default="true" />
+    <param name="robot_description" textfile="$(find robot_urdf)/urdf/uam_urdf.urdf" />
+    <param name="use_gui" value="$(arg gui)" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+    <node name="rviz" pkg="rviz" type="rviz" />
+
+    <!-- joystick node -->
+    <include file="$(find uam_arm)/launch/arm_joy.launch" />
+
+    <!-- Vicon Data -->
+    <include file="$(find viconros)/launch/unit_uam.launch" />
+
+    <!-- Float uav for RVIZ-->
+    <node pkg="uam_arm" name="drone_tf_broadcaster" type="drone_tf_broadcaster"/>
+
+    <!-- IK solver -->
+    <node pkg="uam_arm" name="TRACIKsolver" type="TRACIKsolver" output="screen"/>
+
+    <!-- Servo driver -->
+    <!--<node pkg="uam_arm" name="ftServo" type="ftServo" output="screen"/>-->
+
+</launch>
