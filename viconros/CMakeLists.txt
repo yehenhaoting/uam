@@ -10,8 +10,13 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   geometry_msgs
   message_generation
+  kdl_parser
+  dynamic_reconfigure
 )
-
+generate_dynamic_reconfigure_options(
+        cfg/vicon_cfg.cfg
+        cfg/uam_test_cfg.cfg
+)
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -176,3 +181,6 @@ target_link_libraries(viconros ${catkin_LIBRARIES} DebugServices ViconDataStream
 
 add_executable(viconros_uam src/viconros_uam.cpp src/CFetchViconData.cpp)
 target_link_libraries(viconros_uam ${catkin_LIBRARIES} DebugServices ViconDataStreamSDK_CPP)
+
+add_executable(viconros_arm_test src/viconros_arm_test.cpp src/CFetchViconData.cpp)
+target_link_libraries(viconros_arm_test ${catkin_LIBRARIES} DebugServices ViconDataStreamSDK_CPP)

@@ -1,11 +1,30 @@
 #include "ros/ros.h"
 #include "std_msgs/Float32.h"
 #include <geometry_msgs/PoseStamped.h> 
-#include <geometry_msgs/TwistStamped.h> 
+#include <geometry_msgs/TwistStamped.h>
+#include <kdl/frames.hpp>
+#include <kdl/frames_io.hpp>
+
 #include <sstream>
 #include <string.h>
 #include "CFetchViconData.h"
-#include <fstream>
+
+#include <dynamic_reconfigure/server.h>
+#include <viconros/init_Config.h>
+
+
+KDL::Frame F_world_uav, F_world_segment, F_uav_segment;   //无人机FRD坐标系在vicon坐标系下表达，segment在vicon坐标系下表达，segment在无人机FRD坐标系下表达
+
+viconros::init_Config correct_pose;
+/**
+ * 参数读取callback函数，用于获取飞行控制器的参数
+ * @param config
+ */
+void param_cb(const viconros::init_Config &config)
+{
+    correct_pose = config;
+}
+
 
 int main(int argc, char **argv) {
 	ros::init(argc, argv, "viconros");
@@ -23,6 +42,12 @@ int main(int argc, char **argv) {
 
 	ros::Publisher vicon_pub = n.advertise<geometry_msgs::PoseStamped> ("/uam_base/pose", 10);
 	ros::Publisher vicon_pub1 = n.advertise<geometry_msgs::TwistStamped> ("/mocap/vel", 10);
+
+    // 通过参数服务器的方式，获取控制器的参数
+    dynamic_reconfigure::Server<viconros::init_Config> server;
+    dynamic_reconfigure::Server<viconros::init_Config>::CallbackType ff;
+    ff = boost::bind(&param_cb, _1);
+    server.setCallback(ff);
 
 
 	ros::Rate loop_rate(30);
@@ -53,16 +78,33 @@ int main(int argc, char **argv) {
 //         objs=vicon->GetStatus(model.c_str(),segment.c_str());
         vicon->GetStatus(objs, model.c_str(),segment.c_str());
 
-		msg.header.stamp.sec=(int)objs.tm;
-		msg.header.stamp.nsec=(objs.tm-msg.header.stamp.sec)*10000*100000;
-		msg.pose.position.x =objs.pos[0];
-		msg.pose.position.y =objs.pos[1];
-		msg.pose.position.z =objs.pos[2];
+//		msg.header.stamp.sec=(int)objs.tm;
+//		msg.header.stamp.nsec=(objs.tm-msg.header.stamp.sec)*10000*100000;
+//		msg.pose.position.x =objs.pos[0];
+//		msg.pose.position.y =objs.pos[1];
+//		msg.pose.position.z =objs.pos[2];
+//
+//        msg.pose.orientation.x =objs.ort[0];
+//        msg.pose.orientation.y =objs.ort[1];
+//        msg.pose.orientation.z =objs.ort[2];
+//        msg.pose.orientation.w =objs.ort[3];
+        KDL::Rotation ORT = KDL::Rotation::Quaternion(0,0,0,0);
 
-        msg.pose.orientation.x =objs.ort[0];
-        msg.pose.orientation.y =objs.ort[1];
-        msg.pose.orientation.z =objs.ort[2];
-        msg.pose.orientation.w =objs.ort[3];
+        F_world_segment = KDL::Frame(KDL::Rotation::Quaternion(objs.ort[0], objs.ort[1], objs.ort[2], objs.ort[3]),KDL::Vector(objs.pos[0], objs.pos[1], objs.pos[2]));
+        if(correct_pose.Correct_start){
+            ROS_INFO_STREAM("Correcting the pose bias");
+            F_uav_segment = KDL::Frame(KDL::Rotation::Quaternion(objs.ort[0], objs.ort[1], objs.ort[2], objs.ort[3]), KDL::Vector(correct_pose.EV_POS_X, correct_pose.EV_POS_Y, correct_pose.EV_POS_Z));
+        }
+        F_world_uav = F_world_segment * F_uav_segment.Inverse();
+
+        msg.header.stamp.sec=(int)objs.tm;
+        msg.header.stamp.nsec=(objs.tm-msg.header.stamp.sec)*10000*100000;
+        msg.pose.position.x =F_world_uav.p.data[0];
+        msg.pose.position.y =F_world_uav.p.data[1];
+        msg.pose.position.z =F_world_uav.p.data[2];
+
+        F_world_uav.M.GetQuaternion(msg.pose.orientation.x, msg.pose.orientation.y, msg.pose.orientation.z, msg.pose.orientation.w);
+
 
 //        msg.pose.orientation.x =objs.euler[0];
 //        msg.pose.orientation.y =objs.euler[1];

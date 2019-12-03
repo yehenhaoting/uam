@@ -12,7 +12,7 @@
     <include file="$(find uam_arm)/launch/arm_joy.launch" />
 
     <!-- Vicon Data -->
-    <include file="$(find viconros)/launch/unit_uam.launch" />
+<!--    <include file="$(find viconros)/launch/unit_uam.launch" />-->
 
     <!-- Float uav for RVIZ-->
     <node pkg="uam_arm" name="drone_tf_broadcaster" type="drone_tf_broadcaster"/>
