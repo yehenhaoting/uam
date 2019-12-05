@@ -1,7 +1,6 @@
 #include "ros/ros.h"
 #include "std_msgs/Float32.h"
 #include <geometry_msgs/PoseStamped.h> 
-#include <geometry_msgs/TwistStamped.h>
 #include <kdl/frames.hpp>
 #include <kdl/frames_io.hpp>
 #include <pwd.h>
@@ -18,12 +17,12 @@
 
 std::ofstream logfile;
 
-KDL::Frame F_world_uav, F_world_segment, F_uav_segment;   //无人机FRD坐标系在vicon坐标系下表达，segment在vicon坐标系下表达，segment在无人机FRD坐标系下表达
+KDL::Frame F_world_arm, F_world_segment, F_arm_segment;   //机械臂末端FRD坐标系在vicon坐标系下表达，segment在vicon坐标系下表达，segment在机械臂末端FRD坐标系下表达
 
 viconros::uam_init_Config cfg_param;
 
 geometry_msgs::PoseStamped msg;
-geometry_msgs::PoseStamped data_pose;
+geometry_msgs::PoseStamped data_pose_uav;
 
 float get_ros_time(ros::Time time_begin);
 void data_log(std::ofstream &logfile, float cur_time);
@@ -38,6 +37,17 @@ int count = 0;
 void param_cb(const viconros::uam_init_Config &config)
 {
     cfg_param = config;
+}
+
+void pose_callback(const geometry_msgs::PoseStamped &pose)
+{
+
+    data_pose_uav.header = msg.header;
+    data_pose_uav.pose.position = pose.pose.position;
+
+    KDL::Rotation Rotation_uav = KDL::Rotation::Quaternion(pose.pose.orientation.x, pose.pose.orientation.y, pose.pose.orientation.z, pose.pose.orientation.w);
+    Rotation_uav.GetRPY(data_pose_uav.pose.orientation.x,data_pose_uav.pose.orientation.y,data_pose_uav.pose.orientation.z);
+
 }
 
 
@@ -57,8 +67,11 @@ int main(int argc, char **argv) {
 	ROS_INFO("HOST:%s",ip.c_str());
 	ROS_INFO("MODEL:%s; SEGMENT:%s",model.c_str(),segment.c_str());
 
-	ros::Publisher vicon_pub = n.advertise<geometry_msgs::PoseStamped> ("/record/EE_pose", 10);
-//	ros::Publisher vicon_pub1 = n.advertise<geometry_msgs::TwistStamped> ("/mocap/vel", 10);
+
+    ros::Subscriber sub = n.subscribe("/uam_base/pose", 10, pose_callback);
+
+	ros::Publisher arm_pub = n.advertise<geometry_msgs::PoseStamped> ("/record/arm_pose", 10);
+	ros::Publisher uav_pub = n.advertise<geometry_msgs::PoseStamped> ("/record/uav_pose", 10);
 
     // 通过参数服务器的方式，获取控制器的参数
     dynamic_reconfigure::Server<viconros::uam_init_Config> server;
@@ -68,7 +81,6 @@ int main(int argc, char **argv) {
 
 
 	ros::Rate loop_rate(50);
-	int count = 0;
 	CFetchViconData * vicon=new CFetchViconData();
 	const char * host=ip.c_str();
 	ObjStatus objs;
@@ -91,61 +103,40 @@ int main(int argc, char **argv) {
     ros::Time begin_time = ros::Time::now();
 	while (ros::ok()) {
         float cur_time = get_ros_time(begin_time);  // 当前时间
-
-//		geometry_msgs::TwistStamped msg1;
-
-//         objs=vicon->GetStatus(model.c_str(),segment.c_str());
         vicon->GetStatus(objs, model.c_str(),segment.c_str());
 
-//		msg.header.stamp.sec=(int)objs.tm;
-//		msg.header.stamp.nsec=(objs.tm-msg.header.stamp.sec)*10000*100000;
-//		msg.pose.position.x =objs.pos[0];
-//		msg.pose.position.y =objs.pos[1];
-//		msg.pose.position.z =objs.pos[2];
+//        msg.header.stamp.sec=(int)objs.tm;
+//        msg.header.stamp.nsec=(objs.tm-msg.header.stamp.sec)*10000*100000;
+//        msg.pose.position.x =objs.pos[0];
+//        msg.pose.position.y =objs.pos[1];
+//        msg.pose.position.z =objs.pos[2];
 //
 //        msg.pose.orientation.x =objs.ort[0];
 //        msg.pose.orientation.y =objs.ort[1];
 //        msg.pose.orientation.z =objs.ort[2];
 //        msg.pose.orientation.w =objs.ort[3];
+
         KDL::Rotation ORT = KDL::Rotation::Quaternion(0,0,0,0);
 
         F_world_segment = KDL::Frame(KDL::Rotation::Quaternion(objs.ort[0], objs.ort[1], objs.ort[2], objs.ort[3]),KDL::Vector(objs.pos[0], objs.pos[1], objs.pos[2]));
         if(cfg_param.Correct_start){
             ROS_INFO_STREAM("Correcting the pose bias");
-            F_uav_segment = KDL::Frame(KDL::Rotation::Quaternion(objs.ort[0], objs.ort[1], objs.ort[2], objs.ort[3]), KDL::Vector(cfg_param.EV_POS_X, cfg_param.EV_POS_Y, cfg_param.EV_POS_Z));
+            F_arm_segment = KDL::Frame(KDL::Rotation::Quaternion(objs.ort[0], objs.ort[1], objs.ort[2], objs.ort[3]), KDL::Vector(cfg_param.EV_POS_X, cfg_param.EV_POS_Y, cfg_param.EV_POS_Z));
         }
-        F_world_uav = F_world_segment * F_uav_segment.Inverse();
+        F_world_arm = F_world_segment * F_arm_segment.Inverse();
+
 
         msg.header.stamp.sec=(int)objs.tm;
         msg.header.stamp.nsec=(objs.tm-msg.header.stamp.sec)*10000*100000;
-        msg.pose.position.x =F_world_uav.p.data[0] + cfg_param.BIAS_POS_X;
-        msg.pose.position.y =F_world_uav.p.data[1] + cfg_param.BIAS_POS_Y;
-        msg.pose.position.z =F_world_uav.p.data[2] + cfg_param.BIAS_POS_Z;
+        msg.pose.position.x = F_world_arm.p.data[0] + cfg_param.BIAS_POS_X;
+        msg.pose.position.y = F_world_arm.p.data[1] + cfg_param.BIAS_POS_Y;
+        msg.pose.position.z = F_world_arm.p.data[2] + cfg_param.BIAS_POS_Z;
 
-//        F_world_uav.M.GetQuaternion(msg.pose.orientation.x, msg.pose.orientation.y, msg.pose.orientation.z, msg.pose.orientation.w);
-        F_world_uav.M.GetRPY(msg.pose.orientation.x, msg.pose.orientation.y, msg.pose.orientation.z); //获取欧拉角信息
+//        F_world_arm.M.GetQuaternion(msg.pose.orientation.x, msg.pose.orientation.y, msg.pose.orientation.z, msg.pose.orientation.w);
+        F_world_arm.M.GetRPY(msg.pose.orientation.x, msg.pose.orientation.y, msg.pose.orientation.z); //获取欧拉角信息
 
-//        msg.pose.orientation.x =objs.euler[0];
-//        msg.pose.orientation.y =objs.euler[1];
-//        msg.pose.orientation.z =objs.euler[2];
-//        msg.pose.orientation.w =0;
-
-//		msg1.header.stamp.sec=(int)objs.tm;
-//		msg1.header.stamp.nsec=(objs.tm-msg.header.stamp.sec)*10000*100000;
-//		msg1.twist.linear.x =objs.vel[0];
-//		msg1.twist.linear.y =objs.vel[1];
-//		msg1.twist.linear.z =objs.vel[2];
-
-//		std::cout<<"current_POS"<<"\t"<<objs.pos[0]<<"\t"<<objs.pos[1]<<"\t"<<objs.pos[2]<<std::endl;
-//		std::cout<<"current_ort"<<"\tx:"<<objs.ort[0]<<"\ty:"<<objs.ort[1]<<"\tz:"<<objs.ort[2]<<"\tw:"<<objs.ort[3]<<std::endl;
-
-		
-		//std::cout<<objs.pos[0]<<"-"<<objs.pos[1]<<std::endl;
-		//ROS_INFO("position:%f-%f-%f; velocity: %f-%f-%f", msg.position.x,msg.position.y,msg.position.z,msg.velocity.x,msg.velocity.y,msg.velocity.z);
-		
-		
-		vicon_pub.publish(msg);
-//		vicon_pub1.publish(msg1);
+		arm_pub.publish(msg);
+		uav_pub.publish(data_pose_uav);
 
         if(cfg_param.Enable_log_to_file){
             data_log(logfile, cur_time);                     //log输出
@@ -162,7 +153,6 @@ int main(int argc, char **argv) {
 
 		ros::spinOnce();
 		loop_rate.sleep();
-		//++count;
 	}
 
     logfile.close();
@@ -222,9 +212,10 @@ void data_log(std::ofstream &logfile, float cur_time)
 {
     count ++;
     logfile << cur_time << ","
-            <<msg.pose.position.x <<","<<msg.pose.position.y <<","<<msg.pose.position.z <<","    //set_pos
-            <<msg.pose.orientation.x <<","<<msg.pose.orientation.y <<","<<msg.pose.orientation.z <<"," <<msg.pose.orientation.w << //uav_pos
+            <<"UAV"<<","<<data_pose_uav.pose.position.x <<","<<data_pose_uav.pose.position.y <<","<<data_pose_uav.pose.position.z <<","    //uav_pos
+            <<data_pose_uav.pose.orientation.x <<","<<data_pose_uav.pose.orientation.y <<","<<data_pose_uav.pose.orientation.z <<"," <<data_pose_uav.pose.orientation.w //uav_ort
+            <<","<<"ARM"<<","<<msg.pose.position.x <<","<<msg.pose.position.y <<","<<msg.pose.position.z <<","    //arm_pos
+            <<msg.pose.orientation.x <<","<<msg.pose.orientation.y <<","<<msg.pose.orientation.z <<"," <<msg.pose.orientation.w << "," << //arm_ort
             std::endl;
     std::cout<<count<<"\tx:"<<msg.pose.position.x<<"\ty:"<<msg.pose.position.y<<"\tz:"<<msg.pose.position.z <<std::endl;
-
 }

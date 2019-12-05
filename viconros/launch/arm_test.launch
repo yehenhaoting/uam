@@ -1,10 +1,10 @@
 <launch>
 	<node name="viconros_arm_test" pkg="viconros" type="viconros_arm_test" output="screen">
 	<param name="host" value="192.168.2.100:801"/>
-	<param name="model" value="hex800"/>
-	<param name="segment" value="uam_uav"/>
+	<param name="model" value="arm"/>
+	<param name="segment" value="uam_arm"/>
 	</node>
 <!--	<node name="xbee_send_uam" pkg="xbee_com" type="xbee_send_uam" output="screen"/>-->
 	<!--node name="record" pkg="rosbag" type="record" args="record -O /home/chengque/rec.bag -a "/-->
-	<node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure"> </node>
+<!--	<node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure"> </node>-->
 </launch>

@@ -35,10 +35,10 @@ csv文件的绝对路径，需进行修改。该python发布PoseStamped格式的
  * 通过Trac-IK进行运动学逆解求解
  > 这一部分体现在*TRACIKsolver.cpp*中，重点是坐标变换的关系要明确。  
  对于机械臂的末端增稳控制，有以下的公式：
- F_world_end = F_world_uav · F_uav_base · F_base_end  
+ F_world_end = F_world_arm · F_uav_base · F_base_end  
  其中，F_A_B表示的是B在A下的Frame表示。  
  >> * 外部通过摇杆输入的指令转化为了 F_world_end 的Frame表示；  
- >> * 测得的无人机的运动转化为了 F_world_uav 的Frame表示；  
+ >> * 测得的无人机的运动转化为了 F_world_arm 的Frame表示；  
  >> * 基座相对于无人机的坐标变换（固定值，由安装决定）由 F_uav_base 的Frame表示；    
  >> * 而机械臂的逆解，求解的是 F_base_end 的关系，即在逆解算法中，
  输入是 F_base_end 的变换关系，求得的输出是机械臂各个关节的转角。

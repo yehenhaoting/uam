@@ -26,6 +26,8 @@ bool reset_flag = false;
 bool start_flag = false;
 bool absolute_flag = false;
 bool virtual_record_enable = true;
+bool hold_init = true;
+bool hold_flag = false;
 
 
 //外部遥操作输入
@@ -111,6 +113,8 @@ int main(int argc, char** argv)
     KDL::Frame F_base_EE_init = F_uav_base.Inverse() * KDL::Frame(KDL::Rotation::RPY(0, 0, 0), KDL::Vector(0.18, 0, -0.30));
     KDL::Frame F_world_uav, F_world_virtual, F_virtual_EE, F_base_EE;
 
+    KDL::JntArray result_hold;
+
     while(ros::ok()){
         KDL::Frame cartpos_init;
         KDL::JntArray result;
@@ -134,6 +138,12 @@ int main(int argc, char** argv)
 
         if(kinematics_status >= 0)
         {
+            if(hold_flag && hold_init){
+                result_hold = result;
+                hold_init = false;
+            }
+            ROS_INFO_STREAM(hold_flag);
+
             joint_state.header.stamp = ros::Time::now();
             joint_state.name.resize(nj);
             joint_state.position.resize(nj);
@@ -143,6 +153,9 @@ int main(int argc, char** argv)
                 ss<<i;
                 joint_state.name[i] = "revolute_joint_" + ss.str();
                 joint_state.position[i] = result(i);
+                if(hold_flag){
+                    joint_state.position[i] = result_hold(i);
+                }
             }
             if(count < 10)
             {
@@ -161,6 +174,10 @@ int main(int argc, char** argv)
                     break;
                 }
             }
+
+
+
+            if(F_base_EE.p.data[2]<0.05) joint_pub_flag = false;
 
             if(joint_pub_flag)
             {
@@ -200,6 +217,7 @@ void mode_decoder(int mode_index){
         }
         case (4):{    //按下 ^ 按钮，末端将相对虚拟坐标系进行旋转控制
             absolute_flag = true;
+            hold_flag = true;
             break;
         }
         default:{   //同时按下以上三个按钮的任意2个or3个，系统将复位至最初上电状态
@@ -207,6 +225,9 @@ void mode_decoder(int mode_index){
             start_flag = false;
             virtual_record_enable = true;
             absolute_flag = false;
+
+            hold_flag = false;
+            hold_init = true;
             break;
         }
     }

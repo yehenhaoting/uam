@@ -13,7 +13,7 @@
 #include <viconros/init_Config.h>
 
 
-KDL::Frame F_world_uav, F_world_segment, F_uav_segment;   //无人机FRD坐标系在vicon坐标系下表达，segment在vicon坐标系下表达，segment在无人机FRD坐标系下表达
+KDL::Frame F_world_arm, F_world_segment, F_arm_segment;   //无人机FRD坐标系在vicon坐标系下表达，segment在vicon坐标系下表达，segment在无人机FRD坐标系下表达
 
 viconros::init_Config correct_pose;
 /**
@@ -93,17 +93,17 @@ int main(int argc, char **argv) {
         F_world_segment = KDL::Frame(KDL::Rotation::Quaternion(objs.ort[0], objs.ort[1], objs.ort[2], objs.ort[3]),KDL::Vector(objs.pos[0], objs.pos[1], objs.pos[2]));
         if(correct_pose.Correct_start){
             ROS_INFO_STREAM("Correcting the pose bias");
-            F_uav_segment = KDL::Frame(KDL::Rotation::Quaternion(objs.ort[0], objs.ort[1], objs.ort[2], objs.ort[3]), KDL::Vector(correct_pose.EV_POS_X, correct_pose.EV_POS_Y, correct_pose.EV_POS_Z));
+            F_arm_segment = KDL::Frame(KDL::Rotation::Quaternion(objs.ort[0], objs.ort[1], objs.ort[2], objs.ort[3]), KDL::Vector(correct_pose.EV_POS_X, correct_pose.EV_POS_Y, correct_pose.EV_POS_Z));
         }
-        F_world_uav = F_world_segment * F_uav_segment.Inverse();
+        F_world_arm = F_world_segment * F_arm_segment.Inverse();
 
         msg.header.stamp.sec=(int)objs.tm;
         msg.header.stamp.nsec=(objs.tm-msg.header.stamp.sec)*10000*100000;
-        msg.pose.position.x =F_world_uav.p.data[0];
-        msg.pose.position.y =F_world_uav.p.data[1];
-        msg.pose.position.z =F_world_uav.p.data[2];
+        msg.pose.position.x =F_world_arm.p.data[0];
+        msg.pose.position.y =F_world_arm.p.data[1];
+        msg.pose.position.z =F_world_arm.p.data[2];
 
-        F_world_uav.M.GetQuaternion(msg.pose.orientation.x, msg.pose.orientation.y, msg.pose.orientation.z, msg.pose.orientation.w);
+        F_world_arm.M.GetQuaternion(msg.pose.orientation.x, msg.pose.orientation.y, msg.pose.orientation.z, msg.pose.orientation.w);
 
 
 //        msg.pose.orientation.x =objs.euler[0];
