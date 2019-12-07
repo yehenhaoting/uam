@@ -11,7 +11,8 @@
   <!--<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />-->
   <!--<node name="rviz" pkg="rviz" type="rviz" />-->
   <node pkg="uam_arm" name="test_servo" type="test_servo"/>
-  <node pkg="uam_arm" name="ftServo" type="ftServo" output="screen"/>
+  <!--<node pkg="uam_arm" name="ftServo" type="ftServo" output="screen"/>-->
+  <node pkg="uam_arm" name="ftServo_new" type="ftServo_new" output="screen"/>
   <node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure"> </node>
 
 </launch>

@@ -17,7 +17,7 @@ to drive the real Arm:
 then open the DC power for Arm  
 #### Frame of Code
 * 获取URDF模型  
-> 该版本采用的是机械臂放置在的方式，采用的是*uav2.urdf*的模型  
+> 该版本采用的是机械臂放置在桌面的方式，采用的是*uav2.urdf*的模型  
 * 通过摇杆发布期望位置
 > 该版本的摇杆部分利用*arm_joy.launch*运行，该launch文件
 中，调用了*turtle_joy*的摇杆控制（采用了ROS的标准库）。

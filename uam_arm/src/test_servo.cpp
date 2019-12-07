@@ -19,6 +19,7 @@ void joint_state_cb(const uam_arm::uam_Config &config, uint32_t level)
 
 
 
+
 int main(int argc, char** argv)
 {
     //ros
@@ -37,9 +38,9 @@ int main(int argc, char** argv)
 
     while(ros::ok()){
         joint_state.header.stamp = ros::Time::now();
-        joint_state.name.resize(6);
-        joint_state.position.resize(6);
-        for(int i=0;i<6;i++)
+        joint_state.name.resize(7);
+        joint_state.position.resize(7);
+        for(int i=0;i<7;i++)
         {
             std::stringstream ss;
             ss<<i;
@@ -52,7 +53,7 @@ int main(int argc, char** argv)
         joint_state.position[3] = debug_joint_state.servo_4;
         joint_state.position[4] = debug_joint_state.servo_5;
         joint_state.position[5] = debug_joint_state.servo_6;
-
+        joint_state.position[6] = debug_joint_state.Key;
 
 
         joint_state_pub.publish(joint_state);

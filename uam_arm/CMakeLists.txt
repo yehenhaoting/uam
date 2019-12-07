@@ -37,11 +37,13 @@ include_directories(
 #add_executable(HololensServer src/HololensServer.cpp)
 add_executable(TRACIKsolver src/TRACIKsolver.cpp)
 add_executable(ftServo src/ftServo.cpp src/ftServo.h)
+add_executable(ftServo_new src/ftServo_new.cpp src/ftServo.h)
 add_executable(test_servo src/test_servo.cpp src/ftServo.h)
 add_executable(Joystick_node src/Joystick_node.cpp)
 
 target_link_libraries(ftServo ${catkin_LIBRARIES})
-target_link_libraries(TRACIKsolver 
+target_link_libraries(ftServo_new ${catkin_LIBRARIES})
+target_link_libraries(TRACIKsolver
   ${catkin_LIBRARIES}
   ${Boost_LIBRARIES}
   ${orocos_kdl_LIBRARIES}
@@ -51,5 +53,6 @@ target_link_libraries(Joystick_node ${catkin_LIBRARIES})
 
 
 add_dependencies(ftServo ${catkin_EXPORTED_TARGETS})
+add_dependencies(ftServo_new ${catkin_EXPORTED_TARGETS})
 add_dependencies(test_servo ${catkin_EXPORTED_TARGETS})
 
