@@ -10,6 +10,7 @@
 int linear_X, linear_Y, linear_Z, angular_R, angular_P, angular_Y, mode_XYZ, mode_RPY, mode_reset, mode_start, mode_absolute;
 double l_scale_X, l_scale_Y, l_scale_Z, a_scale_R, a_scale_P, a_scale_Y;
 unsigned int modeFlags;
+int EE_LeftRight, EE_UpDown; //对于末端软体抓手的继电器控制
 
 
 geometry_msgs::Twist vel_pub;
@@ -35,6 +36,9 @@ void joy_init(ros::NodeHandle & nh_)
     nh_.param("scale_angular_R", a_scale_R, 1.0);
     nh_.param("scale_angular_P", a_scale_P, 1.0);
     nh_.param("scale_angular_Y", a_scale_Y, 1.0);
+
+    nh_.param("axis_Left_Right", EE_LeftRight, 6);
+    nh_.param("axis_Up_Down", EE_UpDown, 7);
 }
 
 /**
@@ -112,6 +116,11 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
     }
     if(joy->buttons[mode_start]) mode_encoder(1, true);
     if(joy->buttons[mode_absolute]) mode_encoder(2, true);
+    if(joy->axes[EE_LeftRight] >  0.5) mode_encoder(3, true);
+    if(joy->axes[EE_LeftRight] < -0.5) mode_encoder(4, true);
+    if(joy->axes[EE_UpDown] >  0.5)    mode_encoder(5, true);
+    if(joy->axes[EE_UpDown] <- 0.5)    mode_encoder(6, true);
+
     pose_pub.orientation.w = modeFlags;
 //    pose_pub.orientation.w = joy->buttons[mode_reset];
 

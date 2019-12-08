@@ -31,26 +31,30 @@ include_directories(
 )
 
 add_executable(KeyboardTeleopNode src/KeyboardTeleopNode.cpp)
-add_executable(HololensServer src/HololensServer.cpp)
-add_executable(TRACIKsolver src/TRACIKsolver.cpp)
-add_executable(ftServo src/ftServo.cpp src/ftServo.h)
-add_executable(Joystick_node src/Joystick_node.cpp)
-
 target_link_libraries(KeyboardTeleopNode ${catkin_LIBRARIES})
-target_link_libraries(ftServo ${catkin_LIBRARIES})
+add_dependencies(KeyboardTeleopNode ${catkin_EXPORTED_TARGETS})
+
+add_executable(HololensServer src/HololensServer.cpp)
 target_link_libraries(HololensServer ${catkin_LIBRARIES})
-target_link_libraries(TRACIKsolver 
+add_dependencies(HololensServer ${catkin_EXPORTED_TARGETS})
+
+add_executable(Joystick_node src/Joystick_node.cpp)
+target_link_libraries(Joystick_node ${catkin_LIBRARIES})
+
+add_executable(TRACIKsolver src/TRACIKsolver.cpp)
+target_link_libraries(TRACIKsolver
   ${catkin_LIBRARIES}
   ${Boost_LIBRARIES}
   ${orocos_kdl_LIBRARIES}
 )
-target_link_libraries(Joystick_node ${catkin_LIBRARIES})
-
-
-add_dependencies(KeyboardTeleopNode ${catkin_EXPORTED_TARGETS})
-add_dependencies(HololensServer ${catkin_EXPORTED_TARGETS})
-add_dependencies(ftServo ${catkin_EXPORTED_TARGETS})
 
 add_executable(drone_tf_broadcaster src/drone_tf_broadcaster.cpp)
 target_link_libraries(drone_tf_broadcaster ${catkin_LIBRARIES})
 
+add_executable(ftServo src/ftServo.cpp src/ftServo.h)
+target_link_libraries(ftServo ${catkin_LIBRARIES})
+add_dependencies(ftServo ${catkin_EXPORTED_TARGETS})
+
+add_executable(ftServo_new src/ftServo_new.cpp src/ftServo.h)
+target_link_libraries(ftServo_new ${catkin_LIBRARIES})
+add_dependencies(ftServo_new ${catkin_EXPORTED_TARGETS})

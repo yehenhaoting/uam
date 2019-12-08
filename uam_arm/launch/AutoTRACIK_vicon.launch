@@ -18,9 +18,10 @@
     <node pkg="uam_arm" name="drone_tf_broadcaster" type="drone_tf_broadcaster"/>
 
     <!-- IK solver -->
-    <node pkg="uam_arm" name="TRACIKsolver" type="TRACIKsolver" output="screen"/>
+    <node pkg="uam_arm" name="TRACIKsolver" type="TRACIKsolver" />
 
     <!-- Servo driver -->
     <!--<node pkg="uam_arm" name="ftServo" type="ftServo" output="screen"/>-->
+    <node pkg="uam_arm" name="ftServo_new" type="ftServo_new" output="screen"/>
 
 </launch>
