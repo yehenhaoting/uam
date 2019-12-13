@@ -13,7 +13,7 @@
 
 #define PI (3.1415926535897932346f)
 
-KDL::Vector EE_xyz = KDL::Vector(0.18, 0.0, -0.28);
+KDL::Vector EE_xyz = KDL::Vector(0.16, 0.0, -0.295);
 KDL::Rotation EE_rpy = KDL::Rotation::RPY(0.0, 1.5708, 0.0);
 
 KDL::Vector UAV_xyz = KDL::Vector(0, 0, 0);
@@ -27,6 +27,9 @@ bool start_flag = false;
 bool absolute_flag = false;
 bool virtual_record_enable = true;
 
+bool hold_falg = false;
+bool hold_init = true;
+
 
 //外部遥操作输入
 bool pose_Init = true;
@@ -35,6 +38,7 @@ void EE_pose_cb(const geometry_msgs::Pose &pose)
 {
 
     KDL::Rotation Temp_rpy = KDL::Rotation::RPY(0.0, 0.0, 0.0);
+    KDL::Vector   Temp_xyz = KDL::Vector(0.0, 0.0, 0.0);
 
     EE_xyz = KDL::Vector(pose.position.x, pose.position.y, pose.position.z);
 
@@ -43,10 +47,13 @@ void EE_pose_cb(const geometry_msgs::Pose &pose)
         pose_Init = false;
     } else{
         Temp_rpy = KDL::Rotation::RPY(pose.orientation.x - last_pose.orientation.x, pose.orientation.y - last_pose.orientation.y, pose.orientation.z - last_pose.orientation.z);
+        Temp_xyz = KDL::Vector(pose.position.x-last_pose.position.x, pose.position.y-last_pose.position.y, pose.position.z-last_pose.position.z);
         if(absolute_flag){
             EE_rpy = Temp_rpy * EE_rpy; //相对世界坐标系旋转
+            // EE_xyz = Temp_xyz * EE_xyz;
         } else{
             EE_rpy = EE_rpy * Temp_rpy; //相对末端坐标系旋转
+            // EE_xyz = EE_xyz * Temp_xyz;
         }
     }
 
@@ -54,6 +61,7 @@ void EE_pose_cb(const geometry_msgs::Pose &pose)
 
     last_pose = pose;
 }
+
 
 //无人机位置输入
 void uam_pose_cb(const geometry_msgs::PoseStamped &msg)
@@ -70,7 +78,9 @@ int main(int argc, char** argv)
     ros::NodeHandle nh;
 
     ros::Subscriber EE_pose_sub = nh.subscribe("/arm/cmd_pose", 10, EE_pose_cb);
-    ros::Subscriber Base_pose_sub = nh.subscribe("/uam_base/pose", 10, uam_pose_cb);
+    //ros::Subscriber Base_pose_sub = nh.subscribe("/uam/base_pose", 10, uam_pose_cb);
+    ros::Subscriber Base_pose_sub = nh.subscribe("/mavros/local_position/pose", 10, uam_pose_cb);
+
 
     ros::Publisher joint_state_pub = nh.advertise<sensor_msgs::JointState>("/joint_states", 1);
 
@@ -108,8 +118,10 @@ int main(int argc, char** argv)
     unsigned int count = 0;
 
     KDL::Frame F_uav_base  = KDL::Frame(KDL::Rotation::RPY(3.1416, 0, 0), KDL::Vector(0, 0, -0.06));
-    KDL::Frame F_base_EE_init = F_uav_base.Inverse() * KDL::Frame(KDL::Rotation::RPY(0, 0, 0), KDL::Vector(0.18, 0, -0.30));
+    KDL::Frame F_base_EE_init = F_uav_base.Inverse() * KDL::Frame(KDL::Rotation::RPY(0, 0, 0), KDL::Vector(0.07, 0, -0.275));
     KDL::Frame F_world_uav, F_world_virtual, F_virtual_EE, F_base_EE;
+    KDL::JntArray result_hold;
+
 
     while(ros::ok()){
         KDL::Frame cartpos_init;
@@ -134,6 +146,10 @@ int main(int argc, char** argv)
 
         if(kinematics_status >= 0)
         {
+            if(hold_falg && hold_init){
+                result_hold = result;
+                hold_init = false;
+            }
             joint_state.header.stamp = ros::Time::now();
             joint_state.name.resize(nj);
             joint_state.position.resize(nj);
@@ -143,6 +159,9 @@ int main(int argc, char** argv)
                 ss<<i;
                 joint_state.name[i] = "revolute_joint_" + ss.str();
                 joint_state.position[i] = result(i);
+                if(hold_falg){
+                    joint_state.position[i] = result_hold(i);
+                }
             }
             if(count < 10)
             {
@@ -152,7 +171,7 @@ int main(int argc, char** argv)
             //计算两次转角的差，避免大范围的摆动
             KDL::JntArray delta;
             KDL::Subtract(result, nominal, delta);
-            for(unsigned int i=0;i<nj-3;i++)
+            for(unsigned int i=0;i<nj;i++)
             {
                 if(abs(delta(i)) > 0.314 && count > 100 && !reset_flag)     //count 避免启动瞬间的大位移无法求解现象
                 {
@@ -161,6 +180,14 @@ int main(int argc, char** argv)
                     break;
                 }
             }
+
+            if(reset_flag && result(1)>0)
+            {
+                joint_pub_flag = false;
+            }
+
+
+            if(F_base_EE.p.data[2]<0.05) joint_pub_flag = false;
 
             if(joint_pub_flag)
             {
@@ -200,14 +227,23 @@ void mode_decoder(int mode_index){
         }
         case (4):{    //按下 ^ 按钮，末端将相对虚拟坐标系进行旋转控制
             absolute_flag = true;
+            hold_falg = true;
             break;
         }
         default:{   //同时按下以上三个按钮的任意2个or3个，系统将复位至最初上电状态
-            reset_flag = true;
-            start_flag = false;
-            virtual_record_enable = true;
-            absolute_flag = false;
-            break;
+            if(mode_index == 8 || mode_index == 16 || mode_index == 32 || mode_index == 64)
+            {
+                break;
+            }else{
+                reset_flag = true;
+                start_flag = false;
+                virtual_record_enable = true;
+                absolute_flag = false;
+
+                hold_falg = false;
+                hold_init = true;
+                break;                
+            }
         }
     }
 }

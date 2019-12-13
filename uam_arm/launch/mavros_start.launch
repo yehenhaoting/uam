@@ -1,0 +1,8 @@
+<launch>
+  <!-- Xbee Start -->
+  <node pkg="xbee_com" type="xbee_receive_uam" name="xbee_receive_uam" output="screen" />
+
+  <!-- Mavros Start -->
+  <include file="$(find mavros)/launch/px4.launch" />
+
+</launch>

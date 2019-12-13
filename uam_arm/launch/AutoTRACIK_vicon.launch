@@ -11,9 +11,6 @@
     <!-- joystick node -->
     <include file="$(find uam_arm)/launch/arm_joy.launch" />
 
-    <!-- Vicon Data -->
-    <include file="$(find viconros)/launch/unit_uam.launch" />
-
     <!-- Float uav for RVIZ-->
     <node pkg="uam_arm" name="drone_tf_broadcaster" type="drone_tf_broadcaster"/>
 
@@ -21,6 +18,6 @@
     <node pkg="uam_arm" name="TRACIKsolver" type="TRACIKsolver" output="screen"/>
 
     <!-- Servo driver -->
-    <!--<node pkg="uam_arm" name="ftServo" type="ftServo" output="screen"/>-->
+    <node pkg="uam_arm" name="ftServo_new" type="ftServo_new" output="screen"/>
 
 </launch>

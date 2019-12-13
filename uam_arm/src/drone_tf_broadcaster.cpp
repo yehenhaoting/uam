@@ -35,7 +35,9 @@ int main(int argc, char** argv){
 //    tf::Transform transform;
 
 //    ros::Subscriber pos_sub = node.subscribe("/uav/uav_pose", 10, uavpose_cb);
-    ros::Subscriber pos_sub = node.subscribe("/uam_base/pose", 10, uavpose_cb);
+//    ros::Subscriber pos_sub = node.subscribe("/uam/base_pose", 10, uavpose_cb);
+      ros::Subscriber pos_sub = node.subscribe("/mavros/local_position/pose", 10, uavpose_cb);
+
 //    ros::Publisher base_pub = node.advertise< geometry_msgs::PoseStamped >("arm/uav_pose", 10);
 
 

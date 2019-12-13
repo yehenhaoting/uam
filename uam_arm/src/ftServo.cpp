@@ -13,12 +13,12 @@ int servo_position7=100;
 double x=0.12,y=0,z=-0.2;
 void chatterCallback(const sensor_msgs::JointState& msg)
 {
-    servo_position1=(msg.position[0]+1.5707963)/3.1415926*2047+2047;
-    servo_position2=(-msg.position[1]-0.32)/3.1415926*2047+2047;
-    servo_position3=(msg.position[2]+0.4707963)/2.618*511+511;
-    servo_position4=(-msg.position[3]+0.02)/2.618*511+511;
-    servo_position5=(msg.position[4]-0.45)/2.618*511+511;
-    servo_position6=(-msg.position[5]-0.12)/2.618*511+511;
+    servo_position1=(msg.position[0]+1.5072)/3.1415926*2047+2047;
+    servo_position2=(-msg.position[1]-0.4396)/3.1415926*2047+2047;
+    servo_position3=(msg.position[2]+0.5652)/2.618*511+511;
+    servo_position4=(-msg.position[3]-0.2512)/2.618*511+511;
+    servo_position5=(msg.position[4]-0.5024)/2.618*511+511;
+    servo_position6=(-msg.position[5]+0.0628)/2.618*511+511;
     cout<<servo_position1<<"-"<<servo_position2<<"-"<<servo_position3<<"-"<<servo_position4<<"-"<<servo_position5<<"-"<<servo_position6<<"-"<<servo_position7<<endl;
 }
 void chatterCallback2(const geometry_msgs::Quaternion& msg)
@@ -27,7 +27,7 @@ void chatterCallback2(const geometry_msgs::Quaternion& msg)
 }
 int main(int argc, char** argv)
 {
-    string device = "/dev/ttyUSB0";
+    string device = "/dev/ftservo";
     int serial_fd = open(device.c_str(), O_RDWR | O_NOCTTY);
     if (serial_fd == -1)
     {

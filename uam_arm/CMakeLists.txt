@@ -54,3 +54,7 @@ add_dependencies(ftServo ${catkin_EXPORTED_TARGETS})
 add_executable(drone_tf_broadcaster src/drone_tf_broadcaster.cpp)
 target_link_libraries(drone_tf_broadcaster ${catkin_LIBRARIES})
 
+
+add_executable(ftServo_new src/ftServo_new.cpp src/ftServo.h)
+target_link_libraries(ftServo_new ${catkin_LIBRARIES})
+add_dependencies(ftServo_new ${catkin_EXPORTED_TARGETS})

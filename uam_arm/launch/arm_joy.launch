@@ -15,6 +15,9 @@
   <param name="axis_angular_P" value="1" type="int"/>
   <param name="axis_angular_Y" value="3" type="int"/>
 
+  <param name="axis_Left_Right" value="6" type="int"/>
+  <param name="axis_Up_Down" value="7" type="int"/>
+
   <param name="buttons_mode_XYZ" value="4" type="int"/>
   <param name="buttons_mode_RPY" value="5" type="int"/>
   <param name="buttons_reset" value="0" type="int"/>
